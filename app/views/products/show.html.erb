@@ -1,0 +1,118 @@
+
+
+
+
+
+<script type="text/javascript"src="jquery.js">
+
+</script>
+<!-- これいる？？ -->
+
+
+
+
+<script>
+$(document).ready(function(){
+  alert('インラインでやってます');
+
+   var n = 1;
+   n = parseInt(n);
+   var pp =0;
+   pp = parseInt(pp)
+
+     pp = <%= @product.price %>;
+     ans = pp*n
+     $(".sumup").text(ans)
+
+
+  $(".gnum").change(function(){
+    n = $(".gnum").val();
+    // idにしたほうがいいかも
+
+    // pp = $(".productprice").val();
+    pp = <%= @product.price %>;
+    // alert(pp);
+    ans = pp*n
+    $(".sumup").text(ans);
+  });
+
+});
+</script>
+
+
+
+
+<body>
+  <div class="whole container-fluid">
+
+
+
+ <div class="row container-show">
+   <div class="col-md-5">
+     <% p = @product %>
+     <%= image_tag(p.image, :width => "450px") %>
+   </div>
+   <div class="col-md-7">
+     <h1> <%= @product.name %> </h1>
+     <h3 style="border-bottom:1px solid gray"> Rs.<%= p.price %> </h3>
+     <!-- <h3 style="border-bottom:1px solid gray"> Rs.<%= link_to(p.price, :class => "productprice", :value => p.price) %> </h3> -->
+     <!-- link_toにクラスとバリュをつけてヤッてみたが、Undefinedで返ってきてうまく値の受け渡しができなかった。 -->
+
+     <span>Quantity:</span>
+     <input class="gnum" type="number" name="" value="1" required min="1">
+     <!-- <select class="gnum" name="">
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       <option value="6">6</option>
+       <option value="7">7</option>
+       <option value="8">8</option>
+       <option value="9">9</option>
+       <option value="10">10</option>
+     </select> -->
+     <span style="padding-left:200px;">Sub totall: Rs.</span>
+     <span style="font-size:20px; color:rgb(255, 115, 71)" class="sumup"></span><br>
+     <!-- <button type="button" class="btn btn-outline-warning">Add to Cart</button> -->
+     <button style="margin-top:50px; border-radius:0%;" type="" class="answer-show btn btn-warning btn-block">Add to Cart</button>
+
+   </div>
+
+ </div>
+ <div class="row bottom-show">
+   <div class="col-md-12" style="border-radius:10px; background-color:rgba(242, 242, 242, 0.89);border:1px solid rgb(203, 203, 203);margin-top:20px">
+     <h4>Recommended for you</h4>
+     <span class="row" style="float:left; margin:10px">
+       <div class="" style="float:left">
+         <%= image_tag(p.image, :width => "100px") %>
+       </div>
+       <div class="" style="float:left">
+         <%= @product.name %> <br>
+         Rs.<%= p.price %>
+         <div id="kinds"> # Accessories</div>
+       </div>
+
+     </span>
+
+     <span class="row" style="float:left;  margin:10px">
+       <div class="" style="float:left">
+         <%= image_tag(p.image, :width => "100px") %>
+       </div>
+       <div class="" style="float:left">
+         <%= @product.name %> <br>
+         Rs.<%= p.price %>
+         <div id="kinds"> # Accessories</div>
+       </div>
+
+     </span>
+     <!-- <%= image_tag(p.image, :width => "100px") %>
+     <%= image_tag(p.image, :width => "100px") %> -->
+
+   </div>
+ </div>
+
+  </div>
+
+
+</body>

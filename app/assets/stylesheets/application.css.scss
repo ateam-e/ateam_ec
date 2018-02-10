@@ -1,0 +1,134 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+ @import "bootstrap-sprockets";
+
+* {
+ // font-family: sans-serif;
+}
+
+ body{
+   margin:0px;
+ }
+
+ .whole {
+   // width: 80%;
+   // margin-left: 10%
+   width: 80%;
+   margin-left: 10%;
+ }
+.content{
+  width: 98%;
+  margin:0 auto;
+
+}
+ .hbutton1{
+   // float:right;
+   // padding-left: 10%;
+   margin-left: 200px;
+ }
+
+ .hpic{
+   // width: 50px;
+   // margin:0 auto;
+   width:220px;
+   margin-top:10px;
+   margin-left:30%;
+ }
+
+ .hbutton1{
+   // margin-left:285px;
+   // text-align: right;
+   float: right;
+   margin-top: 20px;
+ }
+ .mainpic{
+   width:1100px;
+   // margin: 0 auto;
+   text-align: center;
+ }
+
+ .mbrank{
+   height: 50px;
+   // color: black;
+ }
+
+ #kinds{
+   float: right;
+   border: 1px solid black;
+   padding: 3px;
+   font-size: 10px;
+ }
+ td{
+   width: 50px;
+ }
+
+ .bottom{
+   background-color: #E7E7E5;
+   text-align: center;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   margin-top: 50px;
+
+ }
+
+ .bword{
+   font-size: 12px;
+   padding-top: 10px;
+ }
+
+ .goodsrow{
+   padding-bottom: 20px;
+ }
+
+ .goodscol{
+   // width: 150px;
+ }
+ .categoryrow{
+   padding-bottom: 15px;
+   padding-left: 20px;
+   border: 0px;
+ }
+ .categoryb{
+   border: 0px;
+   border-radius: 0%;
+   font-size: 12px;
+   color: rgb(75, 75, 75);
+   padding: 10px;
+
+ }
+ .categoryb :hover{
+   border: 0px;
+   border-radius: 0%;
+   font-size: 12px;
+   color: rgb(75, 75, 75);
+   background-color: rgb(112, 146, 255);
+    // ここなんで表示されない
+ }
+
+ .tab1 :hover{
+   background-color:rgba(255, 203, 203, 0.87);
+   padding: 10px;
+
+ }
+
+ .samplebuttom :hover{
+   background-color: red;
+ }
+
+#category-1{
+
+}

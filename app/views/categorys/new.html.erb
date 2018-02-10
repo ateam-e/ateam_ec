@@ -1,0 +1,6 @@
+<%= form_for(@category, :url => { :controller => :categorys, :action => :create}) do |c| %>
+<!-- ココの使い方がマジでわかんない -->
+Add category name
+<%= c.text_field :name %>
+<%= c.submit 'Add' %>
+<% end %>

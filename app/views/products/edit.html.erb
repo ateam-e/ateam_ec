@@ -1,0 +1,29 @@
+<%= form_with(model: @product) do |pro| %>
+  <h1> change information if you want </h1>
+  <table>
+    <tr>
+      <!-- <th>id</th> -->
+      <th>name</th>
+      <th>price</th>
+      <th>description</th>
+      <th>image</th>
+      <th>category</th>
+
+    </tr>
+    <tr>
+      <!-- <td><%= pro.text_field :id %> </td> -->
+      <td><%= pro.text_field :name %> </td>
+      <td><%= pro.number_field :price %> </td>
+      <td><%= pro.text_area :description %> </td>
+      <td><%= pro.file_field :image %> </td>
+      <td><%= pro.select :category_id, options_from_collection_for_select(Category.all, :id, :name), :include_blank => "Choose Category" %> </td>
+
+
+
+
+    </tr>
+  </table>
+
+  <%= pro.submit "change" %>
+  <!-- updateにながれる？ -->
+<% end %>

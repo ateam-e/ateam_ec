@@ -1,0 +1,42 @@
+<!-- レンダーのルビータグをつかってファイルパスを指定する -->
+<!-- _名前のhtmlファイルをつくってそこに↑のものを書く -->
+<div class="whole container-fluid">
+  <span> <%= button_to 'ITEM', users_home_path, method: :get %> </span>
+<span> <%= session[:myname] %> </span>
+
+<div class="head row">
+  <!-- <div class="col-md-5"> -->
+
+  <%= link_to users_home_path do %>
+    <input class ="hbutton btn btn-danger" type="button" name="" value="HOME">
+  <% end %>
+  <!-- <input class ="hbutton" type="button" name="" value="ITEM">  -->
+
+  <!-- </div> -->
+  <!-- <div class="col-md-7"> -->
+  <%= image_tag("ecsite_pic/head1.png", :class => "hpic") %>
+
+<div class="hbutton1">
+
+
+  <% if session[:myid] %>
+    <%= link_to logout_path do %>
+      <input class =" btn btn-danger" type="button" name="" value="LOGOUT">
+    <% end %>
+  <% else %>
+    <%= link_to login_path do %>
+      <input class =" btn btn-danger" type="button" name="" value="LOGIN">
+    <% end %>
+  <% end %>
+
+  <%= link_to new_customer_path do %>
+    <input class ="hbutton btn btn-danger" type="button" name="" value="REGISTAR">
+  <% end %>
+
+  <%= link_to users_home_path do %>
+    <input class ="hbutton btn btn-danger" type="button" name="" value="CART">
+  <% end %>
+  <!-- </div> -->
+  <!-- colの使い方がわからなかった -->
+  </div>
+</div>

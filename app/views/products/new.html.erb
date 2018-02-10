@@ -1,0 +1,25 @@
+<h1>Product Insert Form</h1>
+<%= form_for(@product, multipart: true) do |p| %>
+<div class="">
+  name
+  <%= p.text_field :name %>
+</div>
+<div class="">
+  price
+  <%= p.number_field :price %>
+</div>
+<div class="">
+  description
+  <%= p.text_area :description %>
+</div>
+<div class="">
+  image
+  <%= p.file_field :image %>
+</div>
+<div class="">
+  category
+  <%= p.select :category_id, options_from_collection_for_select(Category.all, :id, :name), :include_blank => "Choose Category" %>
+</div>
+
+  <%= p.submit 'ADD' %>
+<% end %>

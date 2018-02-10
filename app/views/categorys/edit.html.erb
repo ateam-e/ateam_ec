@@ -1,0 +1,18 @@
+<%= form_with(model: @category) do |c| %>
+  <h1> change information if you want </h1>
+  <table>
+    <tr>
+      <!-- <th>id</th> -->
+      <th>name</th>
+
+    </tr>
+    <tr>
+      <!-- <td><%= c.text_field :id %> </td> -->
+      <td><%= c.text_field :name %> </td>
+
+    </tr>
+  </table>
+
+  <%= c.submit "change"%>
+  <!-- updateにながれる？ -->
+<% end %>

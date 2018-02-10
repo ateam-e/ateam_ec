@@ -1,0 +1,19 @@
+
+
+<table border="1px">
+
+    <th>id</th>
+    <th>name</th>
+
+
+  <% @categories.each do |c| %>
+  <tr>
+    <td><%= c.id %> </td>
+    <td><%= c.name %> </td>
+
+    <td> <%= link_to "edit", edit_category_path(c.id) %> </td>
+    <td> <%= link_to "show", category_path(c) %> </td>
+  </tr>
+
+<% end %>
+</table>

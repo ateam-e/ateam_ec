@@ -1,0 +1,118 @@
+
+  <div class="whole container-fluid">
+
+    <!-- <div class="head row">
+
+
+      <%= link_to users_home_path do %>
+        <input class ="hbutton btn btn-danger" type="button" name="" value="HOME">
+      <% end %>
+
+      <span> <%= button_to 'ITEM', users_home_path, method: :get %> </span>
+
+      <%= image_tag("ecsite_pic/head1.png", :class => "hpic") %>
+
+      <input class ="hbutton" type="button" name="" value="LOGIN"> <%= link_to 'LOGIN', login_path %>
+      <input class ="hbutton" type="button" name="" value="REGISTAR"> <%= link_to 'REGISTAR', new_customer_path %>
+      <input class ="hbutton" type="button" name="" value="CART"> <%= link_to 'CART', users_home_path %>
+
+    </div> -->
+
+
+
+
+
+
+
+
+
+      <!-- <img src="/assets/images/ecsite_pic/main1.png" alt="" style="width:1000px;"> -->
+
+
+      <div class="row">
+        <!-- <%= image_tag("ecsite_pic/main1.png", :class => "col-md-12") %> -->
+        <div id="my-slider" class="carousel slide" data-ride ="carousel">
+
+
+          <ol class="carousel-indicators" style="margin-bottom:-50px">
+            <li data-target="#my-slider" data-slide-to="0" class="active" style="border:1px solid black"></li>
+            <li data-target="#my-slider" data-slide-to="1" style="border:1px solid black"></li>
+          </ol>
+
+
+          <div class="carousel-inner" roll="listbox">
+            <div class="item active">
+              <%= image_tag("ecsite_pic/main1.png", :class => "col-md-13") %>
+              <div class="carousel-caption">
+
+              </div>
+            </div>
+            <div class="item">
+              <%= image_tag("ecsite_pic/main2.png", :class => "col-md-13") %>
+              <div class="carousel-caption">
+
+              </div>
+            </div>
+
+
+            <!-- <a class="left carousel-control" href="#my-slider" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#my-slider" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a> -->
+
+        </div>
+
+      </div>
+
+</div>
+
+      <div class="row mbrank">
+      </div>
+
+    <div class="content row">
+
+      <div class="categoryrow">
+        <% @categories.each do |c| %>
+          <span class="tab1">  <button type="button" name="button" class="categoryb" id="category-<%= c.id %> "><%= c.name %></button> </span>
+        <% end %>
+        <!-- <span class="tab1"><input class="categoryb" type="button" name="" value="ALL"></span>
+        <span class="tab1"><input class="categoryb" type="button" name="" value="Foods"></span>
+        <span class="tab1"><input class="categoryb" type="button" name="" value="Clothes"></span>
+        <span class="tab1"><input class="categoryb"type="button" name="" value="Accessories"></span>
+        <span class="tab1"><input class="categoryb" type="button" name="" value="Sundries"></span>
+        <span class="tab1"><input class="categoryb" type="button" name="" value="Cosmetics"></span>
+        <span class="tab1"><input class="btn btn-default categoryb" type="button" name="" value="Other"></span> -->
+      </div>
+
+
+<!-- ↓商品一覧 -->
+      <div class="row goodsrow">
+        <% @products.each do |p| %>
+
+          <div class="col-md-2 goodscol">
+            <%= link_to image_tag(p.image, :width => "158px", :height => "158px"), p%><br>
+            <%= p.name %><br>
+            Rs <%= p.price %>
+            <div id="kinds"> # Accessories</div>
+          </div>
+        <% end %>
+
+      </div>
+
+
+    </div>
+
+
+    </div>
+    <!-- <div class="bottom">
+      <p class="bword">Copyright © MISAO Co.,ltd. All Rights Reserved.</p>
+    </div>
+
+    <button class="samplebuttom"type="button" name="button">aaaaaaaaaaas</button>
+    <div class="samplebuttom">
+      <h1>aaaaaa</h1>
+    </div> -->

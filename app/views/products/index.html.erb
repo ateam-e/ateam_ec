@@ -1,0 +1,21 @@
+<table border="1px">
+
+    <th>name</th>
+    <th>price</th>
+    <th>image name</th>
+    <th>description</th>
+    <th>image show</th>
+
+  <% @products.each do |pro| %>
+    <tr>
+      <td><%= pro.name %></td>
+      <td>Rs.<%= pro.price %></td>
+      <td><%= pro.description %></td>
+      <td><%= pro.image %></td>
+      <td><%= image_tag(pro.image, :width => "100px")%></td>
+      <td><%= link_to "edit", edit_product_path(pro.id) %></td>
+      <td><%= link_to "show", product_path(pro) %></td>
+    </tr>
+
+  <% end %>
+</table>
