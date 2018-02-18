@@ -13,7 +13,7 @@
 
 <script>
 $(document).ready(function(){
-  alert('インラインでやってます');
+  // alert('インラインでやってます');
 
    var n = 1;
    n = parseInt(n);
@@ -25,8 +25,8 @@ $(document).ready(function(){
      $(".sumup").text(ans)
 
 
-  $(".gnum").change(function(){
-    n = $(".gnum").val();
+  $("#cart_number").change(function(){
+    n = $("#cart_number").val();
     // idにしたほうがいいかも
 
     // pp = $(".productprice").val();
@@ -34,6 +34,7 @@ $(document).ready(function(){
     // alert(pp);
     ans = pp*n
     $(".sumup").text(ans);
+    $("#cart_subtotal").val(ans);
   });
 
 });
@@ -54,12 +55,23 @@ $(document).ready(function(){
    </div>
    <div class="col-md-7">
      <h1> <%= @product.name %> </h1>
+     <!-- ↓ココに見えないフォームをつくってcartに飛ばしてデータベースに保存する -->
+     <%= form_for(:cart, url: '/carts') do |form| %>
+       <%= form.hidden_field :userid, value: session[:myid]%>
+       <!-- <%= form.hidden_field :productname, value: p.name%> -->
+       <!-- <%= form.hidden_field :productprice, value: p.price%> -->
+       <!-- <%= form.text_field :product_id, value: p.id %> -->
+       <%= form.hidden_field :subtotal, value: p.price%>
+
+
      <h3 style="border-bottom:1px solid gray"> Rs.<%= p.price %> </h3>
      <!-- <h3 style="border-bottom:1px solid gray"> Rs.<%= link_to(p.price, :class => "productprice", :value => p.price) %> </h3> -->
      <!-- link_toにクラスとバリュをつけてヤッてみたが、Undefinedで返ってきてうまく値の受け渡しができなかった。 -->
 
      <span>Quantity:</span>
-     <input class="gnum" type="number" name="" value="1" required min="1">
+     <!-- <input class="gnum" type="number" name="" value="1" required min="1"> -->
+     <%= form.select :number, options_for_select(1..10) %>
+     <!-- idが自動生成されている↑ -->
      <!-- <select class="gnum" name="">
        <option value="1">1</option>
        <option value="2">2</option>
@@ -75,15 +87,38 @@ $(document).ready(function(){
      <span style="padding-left:200px;">Sub totall: Rs.</span>
      <span style="font-size:20px; color:rgb(255, 115, 71)" class="sumup"></span><br>
      <!-- <button type="button" class="btn btn-outline-warning">Add to Cart</button> -->
-     <button style="margin-top:50px; border-radius:0%;" type="" class="answer-show btn btn-warning btn-block">Add to Cart</button>
+     <!-- <button style="margin-top:50px; border-radius:0%;" type="" class="answer-show btn btn-warning btn-block">Add to Cart</button> -->
 
+
+       <%= form.submit "Add to a cart", class: "answer-show btn btn-warning btn-block", style: "margin-top:50px; border-radius:0%;"%>
+       <!-- ここから情報を飛ばす↑ -->
+       <!-- ログインしてないときの処理はコントローラーに行って書く -->
+
+
+
+
+    <% end %>
    </div>
 
  </div>
  <div class="row bottom-show">
    <div class="col-md-12" style="border-radius:10px; background-color:rgba(242, 242, 242, 0.89);border:1px solid rgb(203, 203, 203);margin-top:20px">
      <h4>Recommended for you</h4>
-     <span class="row" style="float:left; margin:10px">
+
+     <% @productsub.each do |ps| %>
+     <a href="/products/<%= ps.id %>"><span class="row" style="float:left; margin:10px">
+       <div class="" style="float:left">
+         <%= image_tag(ps.image, :width => "100px") %>
+       </div>
+       <div class="" style="float:left">
+         <%= ps.name %> <br>
+         Rs.<%= ps.price %>
+         <div id="kinds"> # <%= ps.category_id %> </div>
+       </div>
+     </span></a>
+     <% end %>
+     <!-- いいところまって！！ -->
+     <!-- <span class="row" style="float:left; margin:10px">
        <div class="" style="float:left">
          <%= image_tag(p.image, :width => "100px") %>
        </div>
@@ -105,7 +140,7 @@ $(document).ready(function(){
          <div id="kinds"> # Accessories</div>
        </div>
 
-     </span>
+     </span> -->
      <!-- <%= image_tag(p.image, :width => "100px") %>
      <%= image_tag(p.image, :width => "100px") %> -->
 

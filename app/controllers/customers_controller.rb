@@ -31,14 +31,18 @@ class CustomersController < ApplicationController
 
   def loginprocess
     customer = Customer.find_by(email: params[:customer][:email])
-    # ↓ココなんで＠取るのかよくわかってないｓ
+    # ↓ココなんで＠取るのかよくわかってない
     if customer && customer.authenticate(params[:customer][:password])
       flash[:notice] = "success"
       session[:myid] = customer.id
       session[:myname] = customer.name
+      session[:mygender] = customer.gender
+      session[:myimage] = customer.image.url
+      session[:myage] = customer.dateofbirth
       redirect_to users_home_path
     else
       flash[:notice] = "fail"
+      redirect_to login_path
     end
   end
 
@@ -48,6 +52,7 @@ class CustomersController < ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:name,:email,:password)
+    params.require(:customer).permit(:name,:email,:password,:gender,:dateofbirth,:image)
+    # password_digestじゃないのよ
   end
 end

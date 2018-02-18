@@ -1,0 +1,53 @@
+<div class="whole container-fluid">
+  <div class="row" style="border: 1px solid rgb(216, 213, 217)">
+    <div class="col-md-1" style="margin-top:30px; padding-left:30px; font-size:30px">
+      ✔
+    </div>
+    <div class="col-md-1">
+      <!-- 謎にエラーがでる -->
+      <!-- <%= @productone.id %> -->
+      <%= image_tag(@productone.image, :width => "100px", style: "margin-left:-20px;") %>
+      <!-- 画像を別テーブルから取ってくる -->
+      <!-- ココ重要！！！ -->
+    </div>
+    <div class="col-md-1" style="font-size:14px; line-height:16px; margin-top:20px;">
+      <b><%= @productone.name %> <br>
+      Added to Cart</b>
+    </div>
+    <div class="col-md-5 " style="font-size:20px; margin-top:5px; ">
+      Item Quantity: <%= @cart.number %> <br>
+      Price: Rs. <%= @productone.price %> <br>
+      Cart subtotal:Rs. <%= @cart.subtotal %>
+    </div>
+    <div class="col-md-4" style="margin-top:30px;">
+      <%= link_to carts_path do %>
+        <button href = "/users/new" type="button" class="btn btn-warning">cart</button>
+      <% end %>
+      <!-- ファイナルオーダーのNEWに飛ばす -->
+      <%= link_to new_finalorder_path do %>
+        <button type="button" class="btn btn-success">Proceed to Checkout</button>
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="row" style="margin-top:30px; border-radius:1%; border: 1px solid rgb(216, 213, 217);background-color:rgb(246, 246, 246)">
+    <div class="" style="font-size:25px;">
+      Check Other Items
+    </div>
+
+    <div id="css-slider">
+     <div class="slider-wrapper">
+      <% @productsub.each do |p| %>
+          <div class="col-md-3 goodscol slide-item">
+            <%= link_to image_tag(p.image, :width => "240px", :height => "240px"), product_path(p.id) %><br>
+            <span class="categorydevide"><%= p.name %></span> <br>
+            Rs. <%= p.price %>
+
+             <div id="kinds"> # <%= p.category_id %> </div>
+          </div>
+       <% end %>
+      </div>
+    </div>
+  </div>
+</div>

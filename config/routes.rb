@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+root "users#home"
+  devise_for :admins
+  resources :finalorders
+  resources :carts
+
+  get "/cupdate" => "carts#update"
+
+  # get 'carts/new'
+  #
+  # get 'carts/create'
+  #
+  # get 'carts/edit'
+  #
+  # get 'carts/update'
+  #
+  # get 'carts/index'
+  #
+  # get 'carts/show'
+  #
+  # get 'carts/destroy'
 
   resources :customers
   # get 'customers/new'

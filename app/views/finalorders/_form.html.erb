@@ -1,0 +1,58 @@
+<%= form_with(model: finalorder, local: true) do |form| %>
+  <% if finalorder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(finalorder.errors.count, "error") %> prohibited this finalorder from being saved:</h2>
+
+      <ul>
+      <% finalorder.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username, id: :finalorder_username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phonenumber %>
+    <%= form.number_field :phonenumber, id: :finalorder_phonenumber %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :finalorder_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :finalorder_email %>
+  </div>
+
+  <input type="button" name="" value="Next" class="btn btn-success">
+
+  <div class="field">
+    <%= form.label :delivery %>
+    <%= form.text_field :delivery, id: :finalorder_delivery %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment %>
+    <%= form.text_field :payment, id: :finalorder_payment %>
+  </div>
+
+  <input type="button" name="" value="Next" class="btn btn-success">
+
+  <div class="field">
+    <%= form.label :gift %>
+    <%= form.text_field :gift, id: :finalorder_gift %>
+  </div>
+  <!-- <input type="button" name="" value="Next" class="btn btn-success"> -->
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -2,7 +2,7 @@
 <!-- _名前のhtmlファイルをつくってそこに↑のものを書く -->
 <div class="whole container-fluid">
   <span> <%= button_to 'ITEM', users_home_path, method: :get %> </span>
-<span> <%= session[:myname] %> </span>
+
 
 <div class="head row">
   <!-- <div class="col-md-5"> -->
@@ -18,7 +18,12 @@
 
 <div class="hbutton1">
 
-
+<% unless session[:myimage].blank? %>
+  <span> <%= session[:myname] %> </span>
+  <span> <%= session[:myage] %> </span>
+  <span> <%= session[:mygender] %> </span>
+  <span> <%= image_tag(session[:myimage], width: "40px", style: "border-radius:100%;") %> </span>
+<% end %>
   <% if session[:myid] %>
     <%= link_to logout_path do %>
       <input class =" btn btn-danger" type="button" name="" value="LOGOUT">
@@ -33,7 +38,7 @@
     <input class ="hbutton btn btn-danger" type="button" name="" value="REGISTAR">
   <% end %>
 
-  <%= link_to users_home_path do %>
+  <%= link_to carts_path do %>
     <input class ="hbutton btn btn-danger" type="button" name="" value="CART">
   <% end %>
   <!-- </div> -->

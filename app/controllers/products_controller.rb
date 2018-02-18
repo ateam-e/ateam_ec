@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-
+respond_to :js, :html ,:json
+# 先に宣言する
   def new
     @product = Product.new
 
@@ -26,10 +27,18 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @product = Product.where(category_id: params[:category])
+    respond_to do |format|
+      format.html
+      format.json{render :json => @product}
+    end
   end
 
   def show
     @product = Product.find(params[:id])
+    @productsub = Product.where(category_id: @product.category_id)
+    # @productone.destroy
+
   end
 
   def destroy

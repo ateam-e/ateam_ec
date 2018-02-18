@@ -1,0 +1,88 @@
+
+<script>
+ $(document).ready(function(){
+
+ });
+</script>
+<div class="whole container-fluid">
+<% @cart.each do |cart|
+@productone = Product.find_by(id: cart.product_id)
+%>
+
+  <div class="row" style="border: 1px solid rgb(216, 213, 217)">
+    <div class="col-md-1" style="margin-top:30px; padding-left:30px; font-size:30px">
+      ✔
+    </div>
+    <div class="col-md-1">
+
+      <%= image_tag(@productone.image, :width => "100px", :height => "100px", style: "margin-left:-20px;") %>
+
+    </div>
+    <div class="col-md-1" style="font-size:14px; line-height:16px; margin-top:20px;">
+      <b><%= @productone.name %> <br>
+      Added to Cart</b>
+    </div>
+    <div class="col-md-5 " style="font-size:20px; margin-top:5px; ">
+      Item Quantity: <span class="aaa" id="q-<%= cart.id %>"> <%= cart.number %></span> <br>
+      Price: Rs. <%= @productone.price %> <br>
+      Cart subtotal:Rs.<span class="subtotaleach" id="sub-<%= cart.id %>"> <%= cart.subtotal %></span>
+    </div>
+
+    <script>
+      var cartNumber = <%= cart.number %>;
+      var cartPrice = <%= @productone.price %>;
+    </script>
+
+    <div class="col-md-4" style="margin-top:30px;">
+      <select class="gnum_cart" name="" data="<%= cart.id %>" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <%= link_to carts_path do %>
+        <button href = "/users/new" type="button" class="btn btn-warning subtotalbutton">change</button>
+      <% end %>
+      <!-- ファイナルオーダーのNEWに飛ばす -->
+      <%= link_to new_finalorder_path do %>
+        <button type="button" class="btn btn-success">Delete</button>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>
+
+<div class=" row bg-success" >
+  <span style="float:right;"> Subtotal( ?items):Rs?</span><br>
+  <%= link_to new_finalorder_path do %>
+    <button type="button" class="btn btn-success" style="float:right">Proceed to Checkout</button>
+  <% end %>
+</div>
+
+
+  <div class="row" style="margin-top:30px; border-radius:1%; border: 1px solid rgb(216, 213, 217);background-color:rgb(246, 246, 246)">
+    <div class="" style="font-size:25px;">
+      Check Other Items
+    </div>
+
+    <div id="css-slider">
+     <div class="slider-wrapper">
+      <% @productsub.each do |p| %>
+          <div class="col-md-3 goodscol slide-item">
+            <%= link_to image_tag(p.image, :width => "240px", :height => "240px"), product_path(p.id) %><br>
+            <span class="categorydevide"><%= p.name %></span> <br>
+            Rs. <%= p.price %>
+
+             <div id="kinds"> # <%= p.category_id %> </div>
+          </div>
+       <% end %>
+      </div>
+    </div>
+  </div>
+</div>

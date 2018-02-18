@@ -77,7 +77,7 @@
 
       <div class="categoryrow">
         <% @categories.each do |c| %>
-          <span class="tab1">  <button type="button" name="button" class="categoryb" id="category-<%= c.id %> "><%= c.name %></button> </span>
+          <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb" value="<%= c.name %> "><%= c.name %></button> </span>
         <% end %>
         <!-- <span class="tab1"><input class="categoryb" type="button" name="" value="ALL"></span>
         <span class="tab1"><input class="categoryb" type="button" name="" value="Foods"></span>
@@ -94,11 +94,14 @@
         <% @products.each do |p| %>
 
           <div class="col-md-2 goodscol">
-            <%= link_to image_tag(p.image, :width => "158px", :height => "158px"), p%><br>
-            <%= p.name %><br>
+            <%= link_to image_tag(p.image, :width => "158px", :height => "158px"), product_path(p.id) %><br>
+            <span class="categorydevide"><%= p.name %></span> <br>
             Rs <%= p.price %>
-            <div id="kinds"> # Accessories</div>
+
+             <div id="kinds"> # <%= p.category_id %> </div>
+
           </div>
+
         <% end %>
 
       </div>

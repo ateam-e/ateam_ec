@@ -62,4 +62,5 @@ gem 'carrierwave','~> 0.10.0'
 gem 'mini_magick','~> 4.3'
 # ↑２ついめ～じアップローディングのときに追加
 gem 'responders'
-# ↑？？？？？
+# ↑ajax
+gem 'devise'

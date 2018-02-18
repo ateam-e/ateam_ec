@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @finalorder.username %>
+</p>
+
+<p>
+  <strong>Phonenumber:</strong>
+  <%= @finalorder.phonenumber %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @finalorder.address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @finalorder.email %>
+</p>
+
+<p>
+  <strong>Delivery:</strong>
+  <%= @finalorder.delivery %>
+</p>
+
+<p>
+  <strong>Payment:</strong>
+  <%= @finalorder.payment %>
+</p>
+
+<p>
+  <strong>Gift:</strong>
+  <%= @finalorder.gift %>
+</p>
+
+<%= link_to 'Edit', edit_finalorder_path(@finalorder) %> |
+<%= link_to 'Back', finalorders_path %>

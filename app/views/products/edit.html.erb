@@ -16,8 +16,8 @@
       <td><%= pro.number_field :price %> </td>
       <td><%= pro.text_area :description %> </td>
       <td><%= pro.file_field :image %> </td>
-      <td><%= pro.select :category_id, options_from_collection_for_select(Category.all, :id, :name), :include_blank => "Choose Category" %> </td>
-
+      <td><%= pro.select :category_id, options_from_collection_for_select(Category.all, :name, :name), :include_blank => "Choose Category" %> </td>
+        <!-- (Category.all, :name, :name)に変更 -->
 
 
 

@@ -1,0 +1,2 @@
+class Finalorder < ApplicationRecord
+end
