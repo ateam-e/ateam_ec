@@ -28,9 +28,10 @@ $(document).ready(function(){
   $("#cart_number").change(function(){
     n = $("#cart_number").val();
     // idにしたほうがいいかも
-
+alert("#cart_numberは勝手に与えられたドロップボクス内のIDなんだお")
     // pp = $(".productprice").val();
     pp = <%= @product.price %>;
+    // ココの書き方めちゃ大事やん
     // alert(pp);
     ans = pp*n
     $(".sumup").text(ans);
@@ -38,6 +39,7 @@ $(document).ready(function(){
   });
 
 });
+// ↑↑↑↑↑↑↑↑↑↑ここむずかしいぞーーーーーーーー
 </script>
 
 
@@ -61,9 +63,10 @@ $(document).ready(function(){
        <%= form.hidden_field :productname, value: p.name%>
        <%= form.hidden_field :productprice, value: p.price%>
        <%= form.hidden_field :subtotal, value: p.price, id: "cart_subtotal" %>
+       <!-- ココでどうやってsubtotal送ればいいのかがわからん -->
 <!-- このIDについて、いつテーブル作ったのかもどのように値取得してるのかもわからんし -->
        <%= form.hidden_field :product_id, value: p.id %>
-       <%= form.hidden_field :subtotal, value: p.price%>
+
 
 
      <h3 style="border-bottom:1px solid gray"> Rs.<%= p.price %> </h3>

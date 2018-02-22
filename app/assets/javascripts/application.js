@@ -202,4 +202,23 @@ $(document).ready(function(){
   //   });
   // });
 
+
+  $(".fbtn1").click(function(){
+    $(".f-container-2").show();
+    $(".f-container-1").slideUp();
+  });
+  $(".fbtn2").click(function(){
+    $(".f-container-3").show();
+    $(".f-container-2").slideUp();
+  });
+  $(".fbtn-back1").click(function(){
+    $(".f-container-2").hide();
+    $(".f-container-1").slideDown();
+  });
+  $(".fbtn-back2").click(function(){
+    $(".f-container-3").hide();
+    $(".f-container-2").slideDown();
+  });
+
+
 });

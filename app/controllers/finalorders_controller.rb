@@ -10,11 +10,15 @@ class FinalordersController < ApplicationController
   # GET /finalorders/1
   # GET /finalorders/1.json
   def show
+    @cart = Cart.where(userid: session[:myid])
+    
   end
 
   # GET /finalorders/new
   def new
     @finalorder = Finalorder.new
+    @customer = Customer.find_by(id: session[:myid])
+
   end
 
   # GET /finalorders/1/edit

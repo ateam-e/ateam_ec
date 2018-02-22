@@ -1,39 +1,81 @@
+<div class="col-md-offset-2">
+<h2>Confirmation</h2>
+  <table class="table" style="width:500px">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+
+      <%
+      pr = 0;
+      @cart.each do |cart|
+      @productone = Product.find_by(id: cart.product_id)
+      pr = pr + cart.subtotal
+      # ココどうやって書こうか
+      %>
+
+      <tbody>
+        <tr>
+          <td> <%= image_tag(@productone.image, :width => "50px", :height => "50px") %> </td>
+          <td> <%= @productone.name %></td>
+          <td> Rs.<%= cart.productprice %> </td>
+          <td> <%= cart.number %> </td>
+        </tr>
+      </tbody>
+      <% end %>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Subtotal( <%= @cart.count %> items)</th>
+          <th>:Rs <%= pr %> </th>
+        </tr>
+      </thead>
+    </table>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Username:</strong>
+  <strong>Name:</strong><br>
   <%= @finalorder.username %>
 </p>
 
 <p>
-  <strong>Phonenumber:</strong>
+  <strong>Phone Number:</strong><br>
   <%= @finalorder.phonenumber %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>Address:</strong><br>
   <%= @finalorder.address %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>Mail Address:</strong><br>
   <%= @finalorder.email %>
 </p>
 
 <p>
-  <strong>Delivery:</strong>
+  <strong>Delivery:</strong><br>
   <%= @finalorder.delivery %>
 </p>
 
 <p>
-  <strong>Payment:</strong>
+  <strong>Payment:</strong><br>
   <%= @finalorder.payment %>
 </p>
 
 <p>
-  <strong>Gift:</strong>
+  <strong>Gift:</strong><br>
   <%= @finalorder.gift %>
 </p>
 
 <%= link_to 'Edit', edit_finalorder_path(@finalorder) %> |
 <%= link_to 'Back', finalorders_path %>
+
+</div>

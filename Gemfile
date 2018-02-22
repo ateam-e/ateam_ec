@@ -64,3 +64,7 @@ gem 'mini_magick','~> 4.3'
 gem 'responders'
 # ↑ajax
 gem 'devise'
+# 全然わかってない調べろ
+
+gem "font-awesome-rails"
+# フォントオーサム
