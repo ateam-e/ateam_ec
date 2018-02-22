@@ -32,6 +32,14 @@ class CategorysController < ApplicationController
   def show
   end
 
+  def items
+    @categories = Category.all
+    respond_to do |format|
+      format.html
+      format.json{render :json => @categories
+
+  end
+
   def category_params
     params.require(:category).permit(:name)
   end

@@ -10,9 +10,10 @@
   </head>
 
   <body>
-    <%= render partial: "layouts/header" %>
+    <%= render "layouts/header", categories: @categories %>
 
-
+<!-- ↑だめだった -->
+<!-- partial必要？ -->
     </div>
     <%= yield %>
     <div class="bottom">

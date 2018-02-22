@@ -118,9 +118,31 @@
    background-color: rgb(112, 146, 255);
     // ここなんで表示されない
  }
+ .categoryb2{
+   border: 0px;
+   border-radius: 0%;
+   font-size: 12px;
+   color: rgb(75, 75, 75);
+   padding: 10px;
+
+ }
+ .categoryb2 :hover{
+   border: 0px;
+   border-radius: 0%;
+   font-size: 12px;
+   color: rgb(75, 75, 75);
+   background-color: rgb(112, 146, 255);
+   // text-align: center;
+    // ここなんで表示されない
+ }
 
  .tab1 :hover{
    background-color:rgba(255, 203, 203, 0.87);
+   padding: 10px;
+
+ }
+ .tab2 :hover{
+   background-color:rgba(227, 255, 203, 0.87);
    padding: 10px;
 
  }

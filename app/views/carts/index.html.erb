@@ -4,12 +4,19 @@
 
  });
 </script>
-<div class="whole container-fluid">
-<% @cart.each do |cart|
-@productone = Product.find_by(id: cart.product_id)
-%>
 
-  <div class="row" style="border: 1px solid rgb(216, 213, 217)">
+<div class="whole container-fluid">
+<%
+pr = 0;
+@cart.each do |cart|
+@productone = Product.find_by(id: cart.product_id)
+pr = pr + cart.subtotal
+# 総額を出すときの変数pr
+%>
+<!-- このページはまじで意味わからんとくにID -->
+<!-- 見直そう -->
+<!-- データベースの中にNULLが入っていてバグが出ていた。 -->
+  <div class="row" id="cartbox-<%= cart.id %>" style="border: 1px solid rgb(216, 213, 217)">
     <div class="col-md-1" style="margin-top:30px; padding-left:30px; font-size:30px">
       ✔
     </div>
@@ -19,22 +26,24 @@
 
     </div>
     <div class="col-md-1" style="font-size:14px; line-height:16px; margin-top:20px;">
-      <b><%= @productone.name %> <br>
+      <span id="pname-<%= cart.id %>"> <%= @productone.name %></span>  <br>
       Added to Cart</b>
     </div>
     <div class="col-md-5 " style="font-size:20px; margin-top:5px; ">
-      Item Quantity: <span class="aaa" id="q-<%= cart.id %>"> <%= cart.number %></span> <br>
-      Price: Rs. <%= @productone.price %> <br>
+      Item Quantity: <span class="quan" id="q-<%= cart.id %>"> <%= cart.number %></span> <br>
+      Price: Rs. <span class="price" id="p-<%= cart.id %>"> <%= @productone.price %> </span><br>
       Cart subtotal:Rs.<span class="subtotaleach" id="sub-<%= cart.id %>"> <%= cart.subtotal %></span>
     </div>
 
     <script>
       var cartNumber = <%= cart.number %>;
       var cartPrice = <%= @productone.price %>;
+      // いらない↑
     </script>
 
     <div class="col-md-4" style="margin-top:30px;">
       <select class="gnum_cart" name="" data="<%= cart.id %>" >
+        <!-- ココのdataをjqueryのdataにぶち込む -->
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -46,25 +55,26 @@
         <option value="9">9</option>
         <option value="10">10</option>
       </select>
-      <%= link_to carts_path do %>
-        <button href = "/users/new" type="button" class="btn btn-warning subtotalbutton">change</button>
-      <% end %>
+      <!-- <%= link_to carts_path do %> -->
+      <!-- AJAXを使うときにはRUBYタグで囲まない -->
+        <button data="<%= cart.id %>" type="button" class="btn btn-warning subtotalbutton ">change</button>
+      <!-- <% end %> -->
       <!-- ファイナルオーダーのNEWに飛ばす -->
-      <%= link_to new_finalorder_path do %>
-        <button type="button" class="btn btn-success">Delete</button>
-      <% end %>
+      <!-- <%= link_to new_finalorder_path do %> -->
+        <button data="<%= cart.id %>" type="button" class="btn btn-success deletebutton">Delete</button>
+      <!-- <% end %> -->
 
     </div>
   </div>
 <% end %>
 
 <div class=" row bg-success" >
-  <span style="float:right;"> Subtotal( ?items):Rs?</span><br>
+  <span style="float:right; font-size:20px;"> Subtotal( <%= @cart.count %> items):Rs <%= pr %> </span><br>
   <%= link_to new_finalorder_path do %>
-    <button type="button" class="btn btn-success" style="float:right">Proceed to Checkout</button>
-  <% end %>
-</div>
+    <button type="button" class="btn btn-success" style="float:right; margin-top:30px;">Proceed to Checkout</button>
 
+</div>
+<% end %>
 
   <div class="row" style="margin-top:30px; border-radius:1%; border: 1px solid rgb(216, 213, 217);background-color:rgb(246, 246, 246)">
     <div class="" style="font-size:25px;">

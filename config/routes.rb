@@ -5,6 +5,7 @@ root "users#home"
   resources :carts
 
   get "/cupdate" => "carts#update"
+  get "/cdelete" => "carts#destroy"
 
   # get 'carts/new'
   #
@@ -55,7 +56,9 @@ root "users#home"
   # get 'products/destroy'
 
 
+
   resources :categorys
+  get 'hitem' => 'categorys#item'
   # get 'categorys/new' => "categorys#new"
   #
   # get 'categorys/edit'

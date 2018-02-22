@@ -1,16 +1,26 @@
 <!-- レンダーのルビータグをつかってファイルパスを指定する -->
 <!-- _名前のhtmlファイルをつくってそこに↑のものを書く -->
 <div class="whole container-fluid">
-  <span> <%= button_to 'ITEM', users_home_path, method: :get %> </span>
+  <!-- <span> <%= button_to 'ITEM', users_home_path, method: :get %> </span> -->
 
 
 <div class="head row">
   <!-- <div class="col-md-5"> -->
-
+<span>
   <%= link_to users_home_path do %>
     <input class ="hbutton btn btn-danger" type="button" name="" value="HOME">
   <% end %>
-  <!-- <input class ="hbutton" type="button" name="" value="ITEM">  -->
+</span>
+<div class="dropdown" style="padding-left:70px; padding-top-30px;">
+    <input class ="hbutton btn btn-danger itembutton dropdown-toggle" type="button" name="" value="ITEM" data-toggle="dropdown">
+  <div class="dropdown-menu">
+    <% Category.all.each do |c| %>
+    <!-- ローカル変数で定義したかったけど、Category.allでとってこれてしまった。 -->
+      <span class="tab2">  <button type="button" name="button" class="categoryb2" value="<%= c.name %> "><%= c.name %></button> </span> <br>
+    <% end %>
+  </div>
+</div>
+    <!-- ココにカテゴリービューを作りたい -->
 
   <!-- </div> -->
   <!-- <div class="col-md-7"> -->

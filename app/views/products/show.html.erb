@@ -58,9 +58,11 @@ $(document).ready(function(){
      <!-- ↓ココに見えないフォームをつくってcartに飛ばしてデータベースに保存する -->
      <%= form_for(:cart, url: '/carts') do |form| %>
        <%= form.hidden_field :userid, value: session[:myid]%>
-       <!-- <%= form.hidden_field :productname, value: p.name%> -->
-       <!-- <%= form.hidden_field :productprice, value: p.price%> -->
-       <!-- <%= form.text_field :product_id, value: p.id %> -->
+       <%= form.hidden_field :productname, value: p.name%>
+       <%= form.hidden_field :productprice, value: p.price%>
+       <%= form.hidden_field :subtotal, value: p.price, id: "cart_subtotal" %>
+<!-- このIDについて、いつテーブル作ったのかもどのように値取得してるのかもわからんし -->
+       <%= form.hidden_field :product_id, value: p.id %>
        <%= form.hidden_field :subtotal, value: p.price%>
 
 
