@@ -11,13 +11,14 @@ class FinalordersController < ApplicationController
   # GET /finalorders/1.json
   def show
     @cart = Cart.where(userid: session[:myid])
-    
+
   end
 
   # GET /finalorders/new
   def new
     @finalorder = Finalorder.new
     @customer = Customer.find_by(id: session[:myid])
+    @cart = Cart.where(userid: session[:myid])
 
   end
 
@@ -65,6 +66,11 @@ class FinalordersController < ApplicationController
     end
   end
 
+  def finalaction
+    @cart = Cart.where(userid: session[:myid])
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_finalorder
@@ -73,6 +79,6 @@ class FinalordersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def finalorder_params
-      params.require(:finalorder).permit(:username, :phonenumber, :address, :email, :delivery, :payment, :gift)
+      params.require(:finalorder).permit(:username, :phonenumber, :address, :email, :delivery, :payment, :gift, :user_id, :product_id, :quantity)
     end
 end

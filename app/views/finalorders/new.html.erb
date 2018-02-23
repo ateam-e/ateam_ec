@@ -1,4 +1,7 @@
-<div class="col-md-offset-4">
+<div class="row">
+
+
+<div class="col-md-offset-2 col-md-4">
 
   <i class="fas fa-accessible-icon"></i>
   <i class="fab fa-accessible-icon"></i>
@@ -9,5 +12,46 @@
 <%= render 'form', finalorder: @finalorder %>
 
 <!-- <%= link_to 'Back', finalorders_path %> -->
+</div>
 
+<div class="col-md-offset-4">
+  <h2>Your Orders</h2>
+  <table class="table" style="width:500px">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+
+      <%
+      pr = 0;
+      @cart.each do |cart|
+      @productone = Product.find_by(id: cart.product_id)
+      pr = pr + cart.subtotal
+      # ココどうやって書こうか
+      %>
+
+      <tbody>
+        <tr>
+          <td> <%= image_tag(@productone.image, :width => "50px", :height => "50px") %> </td>
+          <td> <%= @productone.name %></td>
+          <td> Rs.<%= cart.productprice %> </td>
+          <td> <%= cart.number %> </td>
+        </tr>
+      </tbody>
+      <% end %>
+      <thead>
+        <tr style="font-size:20px">
+          <th></th>
+          <th></th>
+          <th>Subtotal( <%= @cart.count %> items)</th>
+          <th style="color:rgb(231, 137, 51)">:Rs <%= pr %> </th>
+        </tr>
+      </thead>
+    </table>
+
+</div>
 </div>

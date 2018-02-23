@@ -28,11 +28,11 @@
       </tbody>
       <% end %>
       <thead>
-        <tr>
+        <tr style="font-size:20px">
           <th></th>
           <th></th>
           <th>Subtotal( <%= @cart.count %> items)</th>
-          <th>:Rs <%= pr %> </th>
+          <th style="color:rgb(231, 137, 51)">:Rs <%= pr %> </th>
         </tr>
       </thead>
     </table>
@@ -74,7 +74,9 @@
   <strong>Gift:</strong><br>
   <%= @finalorder.gift %>
 </p>
-
+<%= link_to faction_path do %>
+<button type="button" class="btn btn-success" style="margin-top:30px;">Proceed to Checkout</button>
+<% end %>
 <%= link_to 'Edit', edit_finalorder_path(@finalorder) %> |
 <%= link_to 'Back', finalorders_path %>
 

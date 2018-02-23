@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 root "users#home"
   devise_for :admins
   resources :finalorders
+  get "/faction" => "finalorders#finalaction"
   resources :carts
 
   get "/cupdate" => "carts#update"

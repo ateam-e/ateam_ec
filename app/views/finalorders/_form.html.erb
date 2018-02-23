@@ -1,4 +1,19 @@
 <div class="f-container-1">
+
+  <%
+        proid="";
+        quan="";
+          @cart.each do |fff|
+            proid += [fff.product_id].join('')+","
+            quan += [fff.number].join('')+","
+          end
+# ココめっちゃ大事proid="";quan="";をstringで宣言してその中に@cartの中身をeachで回す。.join('')でfff.product_id]をstringにしてまとめる
+
+   %>
+  <%= proid.chop %>
+  <%= quan.chop %>
+
+
   <%= form_with(model: finalorder, local: true) do |form| %>
     <% if finalorder.errors.any? %>
       <div id="error_explanation">
@@ -67,6 +82,10 @@
       <div class="actions">
         <%= form.submit class: "btn btn-success"%>
       </div>
+
+      <%= form.hidden_field :user_id, value: session[:myid]%>
+      <%= form.hidden_field :product_id, value: proid.chop%>
+      <%= form.hidden_field :quantity, value: quan.chop%>
       <a class="fbtn-back2">Back</a>
     <% end %>
   </div>

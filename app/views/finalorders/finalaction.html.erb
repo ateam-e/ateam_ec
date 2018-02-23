@@ -1,0 +1,16 @@
+<% youbi = %w[Sunday Monday Thuesday Wednesday Thursday Friday Saturday]
+d = Date.today
+deliverday = d + 2
+ %>
+
+<div class="row">
+  <div class="col-md-offset-2">
+    <h2>Thank you for shopping!!<br>
+    Your order is compleated!!<br>
+    we will deliver until <%= deliverday %> <%= youbi[deliverday.wday] %></h2>
+    <%= fa_icon "ambulance 4x horizonta"%>
+
+<h1>cartの中身が消せませんどうしたら良いでしょうか？？？</h1>
+ <!-- ココで消そうとしたけど、だめでした。 -->
+  </div>
+</div>
