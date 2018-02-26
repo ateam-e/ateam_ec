@@ -63,12 +63,15 @@ class FinalordersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to finalorders_url, notice: 'Finalorder was successfully destroyed.' }
       format.json { head :no_content }
+      @cart = Cart.where(userid: session[:myid])
+      @cart.destroy
+      respond_to faction
     end
   end
 
   def finalaction
-    @cart = Cart.where(userid: session[:myid])
-    
+    Cart.where(userid: session[:myid]).destroy_all
+
   end
 
   private

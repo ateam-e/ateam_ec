@@ -68,3 +68,5 @@ gem 'devise'
 
 gem "font-awesome-rails"
 # フォントオーサム
+gem 'omniauth'
+gem 'omniauth-facebook'
