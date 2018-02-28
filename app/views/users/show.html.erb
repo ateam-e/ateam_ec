@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-offset-4">
+    <div class="card bg-success " style="width:400px">
+      <img class="card-img-top img-circle" src=" <%= session[:myimage] %> " alt="Card image">
+      <div class="card-body">
+        <h4 class="card-title"> <%= session[:myname] %> </h4>
+        <p class="card-text"> Your gender <%= session[:mygender] %> </p>
+        <p class="card-text"> Your age <%= session[:myage] %> </p>
+        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Change Your Profile</a>
+      </div>
+<!-- 以下modalの中身 -->
+                      <div class="modal fade" id="myModal">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">Change Your Profile</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        Modal body..
+                      </div>
+                      <div class="modal-body">
+                        Modal body..
+                      </div>
+
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Change</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+<!-- 以上modalの中身 -->
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h1 class="col-md-offset-2">bellow you got these products</h1>
+</div>
