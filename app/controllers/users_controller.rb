@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @forder = Finalorder.where[id: session[:myid]]
+    @forder = Finalorder.where(user_id: session[:myid])
+
+    # @product = Product.
   end
 end
