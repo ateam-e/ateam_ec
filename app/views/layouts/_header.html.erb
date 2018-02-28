@@ -29,7 +29,7 @@
 <div class="hbutton1">
 
 <% unless session[:myimage].blank? %>
-  <span> <%= session[:myname] %> </span>
+  <span> <%= link_to users_show_path do %><%= session[:myname] %> <% end %> </span>
   <span> <%= session[:myage] %> </span>
   <span> <%= session[:mygender] %> </span>
   <span> <%= image_tag(session[:myimage], width: "40px", style: "border-radius:100%;") %> </span>
