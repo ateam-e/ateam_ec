@@ -41,25 +41,58 @@
 </div>
 
 <div class="row">
+  <h1 class="col-md-offset-2">Pennding Items</h1>
+  modal 使って　値を変更したい
   <h1 class="col-md-offset-2">Bellow you got these products</h1>
-   <div class="col-md-offset-2 bg-danger">
+   <div class="col-md-offset-2">
 
-        <% @num = 0 %>
 
-         <% @forder.each do |finalorder|
-           @pro = finalorder.product_id
-           @proid = @pro.split(",")
-           @product = Product.where(id: @proid)
+     <table class="table" style="width:500px">
+         <thead class="">
+           <tr>
+             <th></th>
+             <th>Item Name</th>
+             <th>Category</th>
+             <th>Quantity</th>
+             <th>When You Bought</th>
+           </tr>
+         </thead>
+
+
+         <% @forder.each do |finalorder| %>
+         <% @pro = finalorder.product_id  %>
+         <% @q = finalorder.quantity %>
+         <% @update = finalorder.updated_at %>
+         <% @proid = @pro.split(",")  %>
+         <% @quan = @q.split(",")  %>
+         <%  a = 0;
+          @proid.each do |pr|
+
+           @product = Product.where(id: pr)
+           @product.each do |p|
+
+              %>
+              <tbody>
+                <tr>
+                  <td> <%= image_tag(p.image, size: "60x60", alt: "Edit Entry") %> </td>
+                  <td> <%= p.name %> </td>
+                  <td> <%= p.category_id %></td>
+                  <td> <%= @quan[a] %> Items</td>
+                  <td> <%= @update %></td>
+                  <% a = a+1 %>
+                </tr>
+              </tbody>
+
+         <%
+       end
+
+         end
          %>
 
-         <% @product.each do |p|
-         %>
-          <%= p.id %>,
-          <%= p.name %>,
-        <span style="width:100px"><%= image_tag (p.image) %></span> <br>
-          <% @num += @product.count %>
-         <% end %>
 
+
+         <!-- 難しいなあ -->
+         <!-- ソヌまじすごい　using more than two roops at the same time -->
 
 
              <!-- <td style="width:500px"><%= @proid %></td>
@@ -68,9 +101,10 @@
              <td><%= link_to 'Destroy', finalorder, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
 
 
-             重複する配列が表示されない
+             <!-- 重複する配列が表示されない -->
          <% end %>
-         !!!!!!!!!!!!!!!<%= @num %>
+         </table>
+
 
 
    </div>
