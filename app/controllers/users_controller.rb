@@ -5,7 +5,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Finalorder.order(’id DESC’)
     @forder = Finalorder.where(user_id: session[:myid])
+    @forder = @forder.order("id DESC")
+    # この書き方ね
 
     # @product = Product.
   end

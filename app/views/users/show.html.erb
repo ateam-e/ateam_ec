@@ -64,9 +64,11 @@
          <% @q = finalorder.quantity %>
          <% @update = finalorder.updated_at %>
          <% @proid = @pro.split(",")  %>
+         <% @proidx = @proid.reverse  %>
          <% @quan = @q.split(",")  %>
+         <% @quanx = @quan.reverse  %>
          <%  a = 0;
-          @proid.each do |pr|
+          @proidx.each do |pr|
 
            @product = Product.where(id: pr)
            @product.each do |p|
@@ -77,7 +79,7 @@
                   <td> <%= image_tag(p.image, size: "60x60", alt: "Edit Entry") %> </td>
                   <td> <%= p.name %> </td>
                   <td> <%= p.category_id %></td>
-                  <td> <%= @quan[a] %> Items</td>
+                  <td> <%= @quanx[a] %> Items</td>
                   <td> <%= @update %></td>
                   <% a = a+1 %>
                 </tr>
