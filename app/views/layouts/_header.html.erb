@@ -1,57 +1,106 @@
 <!-- レンダーのルビータグをつかってファイルパスを指定する -->
 <!-- _名前のhtmlファイルをつくってそこに↑のものを書く -->
-<div class="whole container-fluid">
   <!-- <span> <%= button_to 'ITEM', users_home_path, method: :get %> </span> -->
 
 
-<div class="head row">
+<!-- <div class="head row"> -->
   <!-- <div class="col-md-5"> -->
-<span>
+<!-- <div class="hbutton1"> -->
+
+<!-- </div> -->
+
+<!-- </div> -->
+    <!-- ココにカテゴリービューを作りたい -->
+
+  <!-- </div> -->
+  <!-- <div class="col-md-7"> -->
+
+  <!-- <%= image_tag("ecsite_pic/head1.png", :class => "hpic") %> -->
+  <!-- イメージタグにクラスつける方法 -->
+
+
+<a class="navbar-brand" href="#" style="font-size: 60px; margin-top:20px; color:rgb(255, 255, 255)">IND-EC</a>
+
+
+<div class="hbutton1">
+
+
+  <!-- <%= link_to users_home_path do %>
+  <%= fa_icon("home", text: "Home")%>
+    <input class ="hbutton btn btn-info" type="button" name="" value="HOME">
+  <% end %> -->
+  <!-- もともとのやつ↑ -->
+
+  <form class="form-inline" action="/action_page." style="margin-bottom:10px; margin-top:-10px; margin-left:280px">
+      <input class="form-control mr-md-2" type="text" placeholder="まだ使えません">
+      <button class="btn" type="submit" style="background-color:rgb(105, 107, 108)">
+        <%= fa_icon("search", text: "Search")%>
+      </button>
+  </form>
+<!-- 検索欄 -->
+
+
   <%= link_to users_home_path do %>
-    <input class ="hbutton btn btn-danger" type="button" name="" value="HOME">
+    <button class ="hbutton btn btn-primary" type="button">
+      <%= fa_icon("home", text: "Home")%>
+    </button>
   <% end %>
-</span>
-<div class="dropdown" style="padding-left:70px; padding-top-30px;">
-    <input class ="hbutton btn btn-danger itembutton dropdown-toggle" type="button" name="" value="ITEM" data-toggle="dropdown">
-  <div class="dropdown-menu">
+  <!-- 埋め込みフォントオウサム対応 -->
+
+
+<!-- <div class="dropdown" style="padding-left:70px;"> いらなかった？6/27-->
+    <button class ="hbutton btn btn-success itembutton dropdown-toggle" type="button" data-toggle="dropdown">
+      <%= fa_icon("book", text: "Category")%>
+    </button>
+  <div class="dropdown-menu" style="margin-left:1000px">
     <% Category.all.each do |c| %>
     <!-- ローカル変数で定義したかったけど、Category.allでとってこれてしまった。 -->
       <span class="tab2">  <button type="button" name="button" class="categoryb2" value="<%= c.name %> "><%= c.name %></button> </span> <br>
     <% end %>
   </div>
-</div>
-    <!-- ココにカテゴリービューを作りたい -->
 
-  <!-- </div> -->
-  <!-- <div class="col-md-7"> -->
-  <%= image_tag("ecsite_pic/head1.png", :class => "hpic") %>
 
-<div class="hbutton1">
-
-<% unless session[:myimage].blank? %>
-  <span> <%= link_to users_show_path do %><%= session[:myname] %> <% end %> </span>
-  <span> <%= session[:myage] %> </span>
-  <span> <%= session[:mygender] %> </span>
-  <span> <%= image_tag(session[:myimage], width: "40px", style: "border-radius:100%;") %> </span>
-<% end %>
   <% if session[:myid] %>
     <%= link_to logout_path do %>
-      <input class =" btn btn-danger" type="button" name="" value="LOGOUT">
+      <!-- <input class =" btn btn-danger" type="button" name="" value="LOGOUT"> -->
+      <button class ="hbutton btn btn-danger" type="button" name="" value="LOOUT">
+        <%= fa_icon("sign-out", text: "Logout")%>
+      </button>
     <% end %>
   <% else %>
     <%= link_to login_path do %>
-      <input class =" btn btn-danger" type="button" name="" value="LOGIN">
+      <button class ="hbutton btn btn-danger" type="button" name="" value="LOGIN">
+        <%= fa_icon("sign-in", text: "Login")%>
+      </button>
+    <% end %>
+
+    <%= link_to new_customer_path do %>
+      <button class ="hbutton btn btn-warning" type="button" name="" value="REGISTAR">
+        <%= fa_icon("registered", text: "Register")%>
+      </button>
     <% end %>
   <% end %>
 
-  <%= link_to new_customer_path do %>
-    <input class ="hbutton btn btn-danger" type="button" name="" value="REGISTAR">
-  <% end %>
+
 
   <%= link_to carts_path do %>
-    <input class ="hbutton btn btn-danger" type="button" name="" value="CART">
+    <button class ="hbutton btn btn-info" type="button" name="" value="CART" style="height: 44px">
+      <%= fa_icon("cart-plus", text: "Cart")%>
+    </button>
   <% end %>
-  <!-- </div> -->
-  <!-- colの使い方がわからなかった -->
+
+  <% unless session[:myimage].blank? %>
+  <%= link_to users_show_path do %>
+  <button class ="hbutton btn btn-warning" type="button">
+    <span> <%= image_tag(session[:myimage], width: "29px", style: "border-radius:100%; margin: 0px;") %> </span>
+    <span> <%= session[:myname] %>  </span>
+    <span> <%= session[:myage] %> </span>
+    <span> <%= session[:mygender] %> </span>
+  </button>
+  <% end %>
+  <% end %>
+
+
+
+
   </div>
-</div>

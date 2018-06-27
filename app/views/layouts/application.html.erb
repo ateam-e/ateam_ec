@@ -12,12 +12,21 @@
   </head>
 
   <body>
+
+    <!-- <div class="whole container-fluid"> -->
+    <div class="" id="fixed">
+
     <%= render "layouts/header", categories: @categories %>
 
-<!-- ↑だめだった -->
+<!-- ↑だめだった いけた -->
 <!-- partial必要？ -->
     </div>
-    <%= yield %>
+
+<div style="margin-top:150px">
+  <!-- fixed-topに合わせるための余白 -->
+  <%= yield %>
+
+</div>
     <div class="bottom">
       <p class="bword">Copyright © MISAO Co.,ltd. All Rights Reserved.</p>
     </div>
