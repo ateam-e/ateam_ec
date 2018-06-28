@@ -47,8 +47,14 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: ecsite_production
+#   username: ecsite
+#   password: <%= ENV['ECSITE_DATABASE_PASSWORD'] %>
+
 production:
-  <<: *default
-  database: ecsite_production
-  username: ecsite
-  password: <%= ENV['ECSITE_DATABASE_PASSWORD'] %>
+ <<: *default
+ adapter: postgresql
+ encoding: unicode
+ pool: 5
