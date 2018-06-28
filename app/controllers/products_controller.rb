@@ -10,7 +10,6 @@ respond_to :js, :html ,:json
     @product = Product.new(product_params)
     @product.save
 
-    # ココ意味分からない
   end
 
   def edit

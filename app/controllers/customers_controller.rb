@@ -33,7 +33,7 @@ class CustomersController < ApplicationController
     customer = Customer.find_by(email: params[:customer][:email])
     # ↓ココなんで＠取るのかよくわかってない
     if customer && customer.authenticate(params[:customer][:password])
-      flash[:notice] = "success"
+      flash[:notice] = "Succeeded"
       session[:myid] = customer.id
       session[:myname] = customer.name
       session[:mygender] = customer.gender
@@ -41,7 +41,7 @@ class CustomersController < ApplicationController
       session[:myage] = customer.dateofbirth
       redirect_to users_home_path
     else
-      flash[:notice] = "fail"
+      flash[:notice] = "Failed"
       redirect_to login_path
     end
   end

@@ -20,7 +20,15 @@
 
 <!-- ↑だめだった いけた -->
 <!-- partial必要？ -->
+<% if flash[:notice]%>
+  <div class="flash">
+    <%= flash[:notice]%>
+  </div>
+<% end %>
     </div>
+
+
+
 
 <div style="margin-top:150px">
   <!-- fixed-topに合わせるための余白 -->
