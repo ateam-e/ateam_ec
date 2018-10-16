@@ -10,6 +10,7 @@
 #   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
 #
 default: &default
+  # host: localhost
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -54,7 +55,7 @@ test:
 #   password: <%= ENV['ECSITE_DATABASE_PASSWORD'] %>
 
 production:
- <<: *default
- adapter: postgresql
- encoding: unicode
- pool: 5
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5

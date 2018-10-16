@@ -63,6 +63,7 @@ alert("#cart_numberは勝手に与えられたドロップボクス内のIDな�
        <%= form.hidden_field :productname, value: p.name%>
        <%= form.hidden_field :productprice, value: p.price%>
        <%= form.hidden_field :subtotal, value: p.price, id: "cart_subtotal" %>
+       <!-- id cart_subtotalから値を取ってきてる -->
        <!-- ココでどうやってsubtotal送ればいいのかがわからん -->
 <!-- このIDについて、いつテーブル作ったのかもどのように値取得してるのかもわからんし -->
        <%= form.hidden_field :product_id, value: p.id %>

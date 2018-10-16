@@ -31,7 +31,8 @@ pr = pr + cart.subtotal
     </div>
     <div class="col-md-5 " style="font-size:20px; margin-top:5px; ">
       Item Quantity: <span class="quan" id="q-<%= cart.id %>"> <%= cart.number %></span> <br>
-      Price: Rs. <span class="price" id="p-<%= cart.id %>"> <%= @productone.price %> </span><br>
+      <!-- Price: Rs. <span class="price" id="p-<%= cart.id %>"> <%= cart.productprice %> </span><br> -->
+      <!-- Price: Rs. <span class="price" id="p-<%= cart.id %>"> <%= @productone.price %> </span><br> -->
       Cart subtotal:Rs.<span class="subtotaleach" id="sub-<%= cart.id %>"> <%= cart.subtotal %></span>
     </div>
 
