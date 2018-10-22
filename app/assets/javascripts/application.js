@@ -39,8 +39,47 @@ $(document).ready(function(){
           // STYLEがタグの中で使えなかった
           // RUBYタグも使えるかよくわかってない
           divdd += "<span class='categorydevide'>" + value.name + "</span> <br>"
-          divdd += "Rs." + value.price
+          divdd += "¥" + value.price
           divdd += "<div id='kinds'> #" + value.category_id + "</div>"
+          divdd += "<div id='kinds'> #" + value.state_id + "</div>"
+          divdd += "<div id='kinds'> #" + value.scene_id + "</div>"
+          divdd += "</div>"
+          $(".goodsrow").append(divdd);
+
+          // $(".categorydevide").text(value.name);
+
+        });
+      },
+      error: function(error){
+
+      },
+
+
+    });
+  });
+  $(".categoryb2").click(function(){
+    var cat_name2 = $(this).val();
+
+    $.ajax({
+      url: "/products",
+      type: "get",
+      data: {"category": cat_name2 },
+      dataType: "JSON",
+      success: function(somename){
+        $(".goodsrow").html("");
+        console.log(somename);
+        $.each(somename,function(key,value){
+          var divdd =  "<div class='col-md-2 goodscol'>";
+          divdd += "<a href ='/products/"+value.id+"'><img class ='sub-cat-pic' src="+ value.image.url + " ></a>"
+          // divdd += "<%= link_to image_tag("+ value.image.url +", :width => "158px", :height => "158px"), p%>"
+          // クラスからエクスターナルCSSにとばして画像サイズを調節した。
+          // STYLEがタグの中で使えなかった
+          // RUBYタグも使えるかよくわかってない
+          divdd += "<span class='categorydevide'>" + value.name + "</span> <br>"
+          divdd += "¥" + value.price
+          divdd += "<div id='kinds'> #" + value.category_id + "</div>"
+          divdd += "<div id='kinds'> #" + value.state_id + "</div>"
+          divdd += "<div id='kinds'> #" + value.scene_id + "</div>"
           divdd += "</div>"
           $(".goodsrow").append(divdd);
 
@@ -56,7 +95,7 @@ $(document).ready(function(){
     });
   });
 
-  $(".categoryb2").click(function(){
+  $(".categoryb3").click(function(){
     var cat2_name = $(this).val();
 
     $.ajax({
@@ -77,10 +116,10 @@ $(document).ready(function(){
           // STYLEがタグの中で使えなかった
           // RUBYタグも使えるかよくわかってない
           divdd += "<span class='categorydevide'>" + value.name + "</span> <br>"
-          divdd += "Rs." + value.price
+          divdd += "¥" + value.price
           divdd += "<div id='kinds'> #" + value.category_id + "</div>"
           divdd += "</div>"
-          $(".goodsrow2").append(divdd);
+          $(".goodsrow").append(divdd);
 
           // $(".categorydevide").text(value.name);
 

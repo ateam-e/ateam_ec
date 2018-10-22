@@ -5,6 +5,9 @@
     <th>image name</th>
     <th>description</th>
     <th>image show</th>
+    <th>category</th>
+    <th>state</th>
+    <th>scene</th>
 
   <% @products.each do |pro| %>
     <tr>
@@ -13,6 +16,9 @@
       <td><%= pro.description %></td>
       <td><%= pro.image %></td>
       <td><%= image_tag(pro.image, :width => "100px")%></td>
+      <td><%= pro.category_id%></td>
+      <td><%= pro.state_id%></td>
+      <td><%= pro.scene_id%></td>
       <td><%= link_to "edit", edit_product_path(pro.id) %></td>
       <td><%= link_to "show", product_path(pro) %></td>
     </tr>

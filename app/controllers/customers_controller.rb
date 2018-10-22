@@ -39,6 +39,7 @@ class CustomersController < ApplicationController
       session[:mygender] = customer.gender
       session[:myimage] = customer.image.url
       session[:myage] = customer.dateofbirth
+      session[:myaddress] = customer.address
       redirect_to users_home_path
     else
       flash[:notice] = "Failed"
@@ -52,7 +53,7 @@ class CustomersController < ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:name,:email,:password,:gender,:dateofbirth,:image)
+    params.require(:customer).permit(:name,:email,:password,:gender,:dateofbirth,:image,:address)
     # password_digestじゃないのよ
   end
 end

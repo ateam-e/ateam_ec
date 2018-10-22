@@ -2,26 +2,34 @@
 <%= form_for(@product, multipart: true) do |p| %>
 <!-- multipart: trueイメージをアップロードしたいときに使う -->
 <div class="">
-  name
+  商品名
   <%= p.text_field :name %>
 </div>
 <div class="">
-  price
+  値段
   <%= p.number_field :price %>
 </div>
 <div class="">
-  description
+  商品説明
   <%= p.text_area :description %>
 </div>
 <div class="">
-  image
+  商品画像
   <%= p.file_field :image %>
   <!-- progateで他のやり方もヤッたよ -->
 </div>
 <div class="">
-  category
-  <%= p.select :category_id, options_from_collection_for_select(Category.all, :name, :name), :include_blank => "Choose Category" %>
+  カテゴリー
+  <%= p.select :category_id, options_from_collection_for_select(Category.all, :name, :name), :include_blank => "選択する" %>
+</div>
+<div class="">
+  産地
+  <%= p.select :state_id, options_from_collection_for_select(State.all, :name, :name), :include_blank => "選択する" %>
+</div>
+<div class="">
+  利用シーン
+  <%= p.select :scene_id, options_from_collection_for_select(Scene.all, :name, :name), :include_blank => "選択する" %>
 </div>
 
-  <%= p.submit 'ADD' %>
+  <%= p.submit '商品登録' %>
 <% end %>
