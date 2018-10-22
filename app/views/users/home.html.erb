@@ -81,13 +81,16 @@
         <% @categories.each do |c| %>
           <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb" value="<%= c.name %> "><%= c.name %></button> </span>
         <% end %>
-        <!-- <span class="tab1"><input class="categoryb" type="button" name="" value="ALL"></span>
-        <span class="tab1"><input class="categoryb" type="button" name="" value="Foods"></span>
-        <span class="tab1"><input class="categoryb" type="button" name="" value="Clothes"></span>
-        <span class="tab1"><input class="categoryb"type="button" name="" value="Accessories"></span>
-        <span class="tab1"><input class="categoryb" type="button" name="" value="Sundries"></span>
-        <span class="tab1"><input class="categoryb" type="button" name="" value="Cosmetics"></span>
-        <span class="tab1"><input class="btn btn-default categoryb" type="button" name="" value="Other"></span> -->
+      </div>
+      <div class="categoryrow">
+        <% @categories.each do |c| %>
+          <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb" value="<%= c.name %> "><%= c.name %></button> </span>
+        <% end %>
+      </div>
+      <div class="categoryrow">
+        <% @categories.each do |c| %>
+          <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb" value="<%= c.name %> "><%= c.name %></button> </span>
+        <% end %>
       </div>
 
 
@@ -98,8 +101,10 @@
           <div class="col-md-2 goodscol">
             <%= link_to image_tag(p.image, :width => "158px", :height => "158px"), product_path(p.id) %><br>
             <span class="categorydevide"><%= p.name %></span> <br>
-            Rs <%= p.price %>
+            ¥<%= p.price %>
 
+             <div id="kinds"> # <%= p.category_id %> </div>
+             <div id="kinds"> # <%= p.category_id %> </div>
              <div id="kinds"> # <%= p.category_id %> </div>
 
           </div>
