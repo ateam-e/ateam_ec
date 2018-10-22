@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :scenes
+  resources :states
 root "users#home"
   devise_for :admins
   resources :finalorders

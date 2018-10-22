@@ -83,13 +83,13 @@
         <% end %>
       </div>
       <div class="categoryrow">
-        <% @categories.each do |c| %>
-          <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb" value="<%= c.name %> "><%= c.name %></button> </span>
+        <% @states.each do |state| %>
+          <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb2" value="<%= state.name %> "><%= state.name %></button> </span>
         <% end %>
       </div>
       <div class="categoryrow">
-        <% @categories.each do |c| %>
-          <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb" value="<%= c.name %> "><%= c.name %></button> </span>
+        <% @scenes.each do |scene| %>
+          <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb" value="<%= scene.name %> "><%= scene.name %></button> </span>
         <% end %>
       </div>
 
@@ -104,8 +104,8 @@
             ¥<%= p.price %>
 
              <div id="kinds"> # <%= p.category_id %> </div>
-             <div id="kinds"> # <%= p.category_id %> </div>
-             <div id="kinds"> # <%= p.category_id %> </div>
+             <div id="kinds"> # <%= p.state_id %> </div>
+             <div id="kinds"> # <%= p.scene_id %> </div>
 
           </div>
 

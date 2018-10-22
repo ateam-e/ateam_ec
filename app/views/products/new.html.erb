@@ -20,7 +20,15 @@
 </div>
 <div class="">
   カテゴリー
-  <%= p.select :category_id, options_from_collection_for_select(Category.all, :name, :name), :include_blank => "Choose Category" %>
+  <%= p.select :category_id, options_from_collection_for_select(Category.all, :name, :name), :include_blank => "選択する" %>
+</div>
+<div class="">
+  産地
+  <%= p.select :state_id, options_from_collection_for_select(State.all, :name, :name), :include_blank => "選択する" %>
+</div>
+<div class="">
+  利用シーン
+  <%= p.select :scene_id, options_from_collection_for_select(Scene.all, :name, :name), :include_blank => "選択する" %>
 </div>
 
   <%= p.submit '商品登録' %>

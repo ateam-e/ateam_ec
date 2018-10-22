@@ -8,6 +8,8 @@
       <th>description</th>
       <th>image</th>
       <th>category</th>
+      <th>state</th>
+      <th>scene</th>
 
     </tr>
     <tr>
@@ -17,6 +19,8 @@
       <td><%= pro.text_area :description %> </td>
       <td><%= pro.file_field :image %> </td>
       <td><%= pro.select :category_id, options_from_collection_for_select(Category.all, :name, :name), :include_blank => "Choose Category" %> </td>
+      <td><%= pro.select :state_id, options_from_collection_for_select(State.all, :name, :name), :include_blank => "Choose Category" %> </td>
+      <td><%= pro.select :scene_id, options_from_collection_for_select(Scene.all, :name, :name), :include_blank => "Choose Category" %> </td>
         <!-- (Category.all, :name, :name)に変更 -->
 
 

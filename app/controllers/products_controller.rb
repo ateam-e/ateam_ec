@@ -26,11 +26,40 @@ respond_to :js, :html ,:json
 
   def index
     @products = Product.all
+
+
     @product = Product.where(category_id: params[:category])
+    # ココを変えると絞り込みできる?
     respond_to do |format|
       format.html
       format.json{render :json => @product}
     end
+
+
+
+    # ↓の条件分岐を成立させるにはどうしたら良いのだろう？？？
+    # if cat_name
+    #   @product = Product.where(category_id: params[:category])
+    #   # ココを変えると絞り込みできる?
+    #   respond_to do |format|
+    #     format.html
+    #     format.json{render :json => @product}
+    #   end
+    # elsif catname2
+    # @product = Product.where(state_id: params[:category])
+    # # ココを変えると絞り込みできる?
+    # respond_to do |format|
+    #   format.html
+    #   format.json{render :json => @product}
+    # end
+    # elsif Product(scene_id: params[:category])
+    # @product = Product.where(scene_id: params[:category])
+    #   # ココを変えると絞り込みできる?
+    #   respond_to do |format|
+    #     format.html
+    #     format.json{render :json => @product}
+    #   end
+    # end
   end
 
   def show
@@ -46,6 +75,6 @@ respond_to :js, :html ,:json
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :description, :image, :category_id)
+    params.require(:product).permit(:name, :price, :description, :image, :category_id, :state_id, :scene_id)
   end
 end

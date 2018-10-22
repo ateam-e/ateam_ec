@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   def home
     @categories = Category.all
     @products = Product.all
+    @states = State.all
+    @scenes = Scene.all
   end
 
   def show
