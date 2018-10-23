@@ -7,30 +7,73 @@
         <p class="card-text"> 性別:<%= session[:mygender] %> </p>
         <p class="card-text">  生年月日:<%= session[:myage] %> </p>
         <p class="card-text"> 住所: <%= session[:myaddress] %> </p>
-        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Change Your Profile</a>
+        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">イイネ！したアイテムを見る</a>
+
+
+
       </div>
 <!-- 以下modalの中身 -->
-                      <div class="modal fade" id="myModal">
+                <div class="modal fade" id="myModal">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
 
                       <!-- Modal Header -->
                       <div class="modal-header">
-                        <h4 class="modal-title">Change Your Profile</h4>
+                        <h4 class="modal-title">あなたがイイネ！したアイテム</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                       </div>
 
                       <!-- Modal body -->
                       <div class="modal-body">
-                        Modal body..
+                        <!-- Modal body.. -->
+
+                        <% if @likes.empty?  %>
+                          いいねしたアイテムがありません
+                        <% end %>
+
+                      
+                        <% @likes.each do |like| %>
+                         <% p = Product.find_by(id: like.product_id) %>
+
+                         <% @likes_count = Like.where(product_id: p.id).count %>
+                         <div class="" style="padding-bottom:20px;">
+                           <%= image_tag(p.image, :width => "158px") %>
+                           <%= p.name %>
+                           ¥<%= p.price %>
+                           <div id="kinds"> # <%= p.category_id %> </div>
+                           <div id="kinds"> # <%= p.state_id %> </div>
+                           <div id="kinds"> # <%= p.scene_id %> </div>
+                           <% if Like.find_by(customer_id: @current_customer, product_id: p.id) %>
+                           <!-- @current_customer.idだとうまく挙動しなかった -->
+                            <!-- いいね！済み -->
+                            <%= link_to("/likes/#{p.id}/destroy", {method: "post"}) do %>
+                              <span class="fa fa-heart like-btn-unlike"></span>
+                            <% end %>
+                           <% else %>
+                            <!-- いいね！していません -->
+                            <%= link_to("/likes/#{p.id}/create", {method: "post"}) do %>
+                              <span class="fa fa-heart like-btn"></span>
+                            <% end %>
+                           <% end %>
+
+                           <%= @likes_count %>
+                         </div>
+
+                        <% end %>
+
+<!-- フロントぐちゃぐちゃ -->
+
                       </div>
+
+
+
                       <div class="modal-body">
                         Modal body..
                       </div>
 
                       <!-- Modal footer -->
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Change</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">確認</button>
                       </div>
 
                     </div>

@@ -13,5 +13,13 @@ class UsersController < ApplicationController
     # この書き方ね
 
     # @product = Product.
+
+
+    @customer = Customer.find_by(id: session[:myid])
+    
+    @likes = Like.where(customer_id: @customer.id)
   end
+
+
+
 end
