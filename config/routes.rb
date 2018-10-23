@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+
+  post "likes/:product_id/create" => "likes#create"
+  post "likes/:product_id/destroy" => "likes#destroy"
+
+
   resources :scenes
   resources :states
 root "users#home"

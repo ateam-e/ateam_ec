@@ -97,6 +97,7 @@
 <!-- ↓商品一覧 -->
       <div class="row goodsrow">
         <% @products.each do |p| %>
+        <% @likes_count = Like.where(product_id: p.id).count %>
 
           <div class="col-md-2 goodscol">
             <%= link_to image_tag(p.image, :width => "158px", :height => "158px"), product_path(p.id) %><br>
@@ -107,6 +108,20 @@
              <div id="kinds"> # <%= p.state_id %> </div>
              <div id="kinds"> # <%= p.scene_id %> </div>
 
+             <!-- Like機能実装 -->
+             <% if Like.find_by(customer_id: @current_customer, product_id: p.id) %>
+             <!-- @current_customer.idだとうまく挙動しなかった -->
+              <!-- いいね！済み -->
+              <%= link_to("/likes/#{p.id}/destroy", {method: "post"}) do %>
+                <span class="fa fa-heart like-btn-unlike"></span>
+              <% end %>
+             <% else %>
+              <!-- いいね！していません -->
+              <%= link_to("/likes/#{p.id}/create", {method: "post"}) do %>
+                <span class="fa fa-heart like-btn"></span>
+              <% end %>
+             <% end %>
+             <%= @likes_count %>
           </div>
 
         <% end %>
