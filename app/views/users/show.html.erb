@@ -147,8 +147,9 @@
          <% @proidx = @proid.reverse  %>
          <% @quan = @q.split(",")  %>
          <% @quanx = @quan.reverse  %>
-
+         <% @recipient = Customer.find_by(id: finalorder.recipient_id) %>
          <table class="table" style="width:500px; border: solid 1px;">
+           <%= @update %>に<%= @recipient.name %>にプレゼントしました。
              <thead class="">
                <tr>
                  <th></th>
