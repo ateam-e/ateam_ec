@@ -10,13 +10,15 @@ class UsersController < ApplicationController
     # Finalorder.order(’id DESC’)
     @forder = Finalorder.where(user_id: session[:myid])
     @forder = @forder.order("id DESC")
-    # この書き方ね
 
-    # @product = Product.
+    @catalog = Finalorder.where(recipient_id: session[:myid])
+    @catalog = @catalog.order("id DESC")
+
+
 
 
     @customer = Customer.find_by(id: session[:myid])
-    
+
     @likes = Like.where(customer_id: @customer.id)
   end
 

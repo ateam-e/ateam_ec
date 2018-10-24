@@ -17,7 +17,7 @@ class FinalordersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create finalorder" do
     assert_difference('Finalorder.count') do
-      post finalorders_url, params: { finalorder: { address: @finalorder.address, delivery: @finalorder.delivery, email: @finalorder.email, gift: @finalorder.gift, payment: @finalorder.payment, phonenumber: @finalorder.phonenumber, username: @finalorder.username } }
+      post finalorders_url, params: { finalorder: { address: @finalorder.address, delivery: @finalorder.delivery, email: @finalorder.email, gift: @finalorder.gift, payment: @finalorder.payment, phonenumber: @finalorder.phonenumber, username: @finalorder.username, user_id: @finalorder.user_id, product_id: @finalorder.product_id, quantity: @finalorder.quantity,  recipient_id: @finalorder.recipient_id } }
     end
 
     assert_redirected_to finalorder_url(Finalorder.last)

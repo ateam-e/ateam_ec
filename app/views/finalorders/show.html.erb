@@ -1,12 +1,12 @@
 <div class="col-md-offset-2">
-<h2>Confirmation</h2>
+<h2>カタログリスト（確認）</h2>
   <table class="table" style="width:500px">
       <thead>
         <tr>
           <th></th>
-          <th>Item</th>
-          <th>Price</th>
-          <th>Quantity</th>
+          <th>商品</th>
+          <th>値段</th>
+          <th>個数（必要ない）</th>
         </tr>
       </thead>
 
@@ -22,7 +22,7 @@
         <tr>
           <td> <%= image_tag(@productone.image, :width => "50px", :height => "50px") %> </td>
           <td> <%= @productone.name %></td>
-          <td> Rs.<%= cart.productprice %> </td>
+          <td> ¥<%= cart.productprice %> </td>
           <td> <%= cart.number %> </td>
         </tr>
       </tbody>
@@ -31,8 +31,8 @@
         <tr style="font-size:20px">
           <th></th>
           <th></th>
-          <th>Subtotal( <%= @cart.count %> items)</th>
-          <th style="color:rgb(231, 137, 51)">:Rs <%= pr %> </th>
+          <th>合計（必要ない）( <%= @cart.count %> items)</th>
+          <th style="color:rgb(231, 137, 51)">:¥<%= pr %> </th>
         </tr>
       </thead>
     </table>
@@ -41,11 +41,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong><br>
+  <strong>送り元:</strong><br>
   <%= @finalorder.username %>
 </p>
-
 <p>
+  <strong>送り先:</strong><br>
+  <%= @finalorder.recipient_id %>
+  <!-- <%= @customer %> -->
+  ?名前が表示できない？
+</p>
+
+<!-- <p>
   <strong>Phone Number:</strong><br>
   <%= @finalorder.phonenumber %>
 </p>
@@ -53,14 +59,14 @@
 <p>
   <strong>Address:</strong><br>
   <%= @finalorder.address %>
-</p>
+</p> -->
 
 <p>
   <strong>Mail Address:</strong><br>
   <%= @finalorder.email %>
 </p>
 
-<p>
+<!-- <p>
   <strong>Delivery:</strong><br>
   <%= @finalorder.delivery %>
 </p>
@@ -68,14 +74,14 @@
 <p>
   <strong>Payment:</strong><br>
   <%= @finalorder.payment %>
-</p>
+</p> -->
 
-<p>
+<!-- <p>
   <strong>Gift:</strong><br>
   <%= @finalorder.gift %>
-</p>
+</p> -->
 <%= link_to faction_path do %>
-<button type="button" class="btn btn-success" style="margin-top:30px;">Proceed to Checkout</button>
+<button type="button" class="btn btn-success" style="margin-top:30px;">カタログを送る</button>
 <% end %>
 <%= link_to 'Edit', edit_finalorder_path(@finalorder) %> |
 <%= link_to 'Back', finalorders_path %>
