@@ -46,9 +46,10 @@
 </p>
 <p>
   <strong>送り先:</strong><br>
-  <%= @finalorder.recipient_id %>
-  <!-- <%= @customer %> -->
-  ?名前が表示できない？
+  <% @recipient = Customer.find_by(id: @finalorder.recipient_id) %>
+  <%= @recipient.name %>
+  <!-- <%= @finalorder.recipient_id %> -->
+
 </p>
 
 <!-- <p>

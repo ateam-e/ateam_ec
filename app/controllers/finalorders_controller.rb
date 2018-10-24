@@ -12,6 +12,7 @@ class FinalordersController < ApplicationController
   def show
     @cart = Cart.where(userid: session[:myid])
     @customer = Customer.find_by(id: params[:recipient_id])
+    # binding.pry
 
   end
 
