@@ -31,32 +31,34 @@
                           いいねしたアイテムがありません
                         <% end %>
 
-                      
+
                         <% @likes.each do |like| %>
                          <% p = Product.find_by(id: like.product_id) %>
-
                          <% @likes_count = Like.where(product_id: p.id).count %>
                          <div class="" style="padding-bottom:20px;">
+                           <a href="/products/<%= p.id %>">
                            <%= image_tag(p.image, :width => "158px") %>
                            <%= p.name %>
                            ¥<%= p.price %>
-                           <div id="kinds"> # <%= p.category_id %> </div>
-                           <div id="kinds"> # <%= p.state_id %> </div>
-                           <div id="kinds"> # <%= p.scene_id %> </div>
+                           <span id="kinds"> # <%= p.category_id %> </span>
+                           <span id="kinds"> # <%= p.state_id %> </span>
+                           <span id="kinds"> # <%= p.scene_id %> </span>
                            <% if Like.find_by(customer_id: @current_customer, product_id: p.id) %>
                            <!-- @current_customer.idだとうまく挙動しなかった -->
                             <!-- いいね！済み -->
-                            <%= link_to("/likes/#{p.id}/destroy", {method: "post"}) do %>
+                            <%= link_to("/likes/#{p.id}/destroy", {method: "post"}, name: 'back') do %>
+                            <!-- name: 'back' つけたけどこの画面にリダイレクトすることができなかった。 -->
                               <span class="fa fa-heart like-btn-unlike"></span>
                             <% end %>
                            <% else %>
                             <!-- いいね！していません -->
-                            <%= link_to("/likes/#{p.id}/create", {method: "post"}) do %>
+                            <%= link_to("/likses/#{p.id}/create", {method: "post"}, name: 'back') do %>
                               <span class="fa fa-heart like-btn"></span>
                             <% end %>
                            <% end %>
 
                            <%= @likes_count %>
+                           </a>
                          </div>
 
                         <% end %>
@@ -85,24 +87,58 @@
 </div>
 
 <div class="row">
-  <h1 class="col-md-offset-2">Pennding Items</h1>
-  modal 使って　値を変更したい
-  <h1 class="col-md-offset-2">Bellow you got these products</h1>
+
+  <div class="col-md-offset-2">
+    <h1>受け取ったカタログ</h1>
+    <% @catalog.each do |catalog| %>
+    <% object_name = catalog.product_id %>
+    <% object_name = object_name.split(",") %>
+    <% object_name = object_name.reverse %>
+    <% update = catalog.updated_at %>
+    <% giver_id = catalog.user_id %>
+    <% giver = Customer.find_by(id: giver_id) %>
+    <table class="table" style="width:500px; border: solid 1px;">
+      <%= update %>に<%= giver.name %>からカタログギフトがプレゼントされました。
+        <thead class="">
+          <tr>
+            <th></th>
+            <th>商品</th>
+            <th>カテゴリー</th>
+            <th>商品説明</th>
+          </tr>
+        </thead>
+
+        <% a = 0 %>
+        <% object_name.each do |object_num| %>
+          <% gift_product = Product.where(id: object_num) %>
+          <% gift_product.each do |p| %>
+
+            <tbody>
+              <tr>
+                <td> <%= image_tag(p.image, size: "60x60", alt: "Edit Entry") %> </td>
+                <td> <%= p.name %> </td>
+                <td> <%= p.category_id %> <br>
+                     <%= p.state_id %> <br>
+                     <%= p.scene_id %>
+                </td>
+                <td> <%= p.description %> </td>
+                <% a = a+1 %>
+              </tr>
+            </tbody>
+          <% end %>
+        <% end %>
+    </table>
+    <% end %>
+
+  </div>
+
+
+
+
+
+
+  <h1 class="col-md-offset-2">送ったカタログ</h1>
    <div class="col-md-offset-2">
-
-
-     <table class="table" style="width:500px">
-         <thead class="">
-           <tr>
-             <th></th>
-             <th>Item Name</th>
-             <th>Category</th>
-             <th>Quantity</th>
-             <th>When You Bought</th>
-           </tr>
-         </thead>
-
-
          <% @forder.each do |finalorder| %>
          <% @pro = finalorder.product_id  %>
          <% @q = finalorder.quantity %>
@@ -111,9 +147,21 @@
          <% @proidx = @proid.reverse  %>
          <% @quan = @q.split(",")  %>
          <% @quanx = @quan.reverse  %>
+         <% @recipient = Customer.find_by(id: finalorder.recipient_id) %>
+         <table class="table" style="width:500px; border: solid 1px;">
+           <%= @update %>に<%= @recipient.name %>にプレゼントしました。
+             <thead class="">
+               <tr>
+                 <th></th>
+                 <th>商品名</th>
+                 <th>カテゴリー</th>
+                 <th>個数</th>
+                 <th>When you bought</th>
+               </tr>
+             </thead>
+
          <%  a = 0;
           @proidx.each do |pr|
-
            @product = Product.where(id: pr)
            @product.each do |p|
 

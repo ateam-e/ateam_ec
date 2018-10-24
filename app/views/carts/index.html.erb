@@ -27,13 +27,13 @@ pr = pr + cart.subtotal
     </div>
     <div class="col-md-1" style="font-size:14px; line-height:16px; margin-top:20px;">
       <span id="pname-<%= cart.id %>"> <%= @productone.name %></span>  <br>
-      Added to Cart</b>
+      カートに入っています</b>
     </div>
     <div class="col-md-5 " style="font-size:20px; margin-top:5px; ">
-      Item Quantity: <span class="quan" id="q-<%= cart.id %>"> <%= cart.number %></span> <br>
+      個数: <span class="quan" id="q-<%= cart.id %>"> <%= cart.number %></span> <br>
       <!-- Price: Rs. <span class="price" id="p-<%= cart.id %>"> <%= cart.productprice %> </span><br> -->
       <!-- Price: Rs. <span class="price" id="p-<%= cart.id %>"> <%= @productone.price %> </span><br> -->
-      Cart subtotal:Rs.<span class="subtotaleach" id="sub-<%= cart.id %>"> <%= cart.subtotal %></span>
+      小計:¥<span class="subtotaleach" id="sub-<%= cart.id %>"> <%= cart.subtotal %></span>
     </div>
 
     <script>
@@ -58,11 +58,11 @@ pr = pr + cart.subtotal
       </select>
       <!-- <%= link_to carts_path do %> -->
       <!-- AJAXを使うときにはRUBYタグで囲まない -->
-        <button data="<%= cart.id %>" type="button" class="btn btn-warning subtotalbutton ">change</button>
+        <button data="<%= cart.id %>" type="button" class="btn btn-warning subtotalbutton ">変更</button>
       <!-- <% end %> -->
       <!-- ファイナルオーダーのNEWに飛ばす -->
       <!-- <%= link_to new_finalorder_path do %> -->
-        <button data="<%= cart.id %>" type="button" class="btn btn-success deletebutton">Delete</button>
+        <button data="<%= cart.id %>" type="button" class="btn btn-success deletebutton">削除</button>
       <!-- <% end %> -->
 
     </div>
@@ -70,16 +70,16 @@ pr = pr + cart.subtotal
 <% end %>
 
 <div class=" row bg-success" >
-  <span style="float:right; font-size:20px;"> Subtotal( <%= @cart.count %> items):Rs <%= pr %> </span><br>
+  <span style="float:right; font-size:20px;"> 合計金額( <%= @cart.count %>商品 ):¥<%= pr %> </span><br>
   <%= link_to new_finalorder_path do %>
-    <button type="button" class="btn btn-success" style="float:right; margin-top:30px;">Proceed to Checkout</button>
+    <button type="button" class="btn btn-success" style="float:right; margin-top:30px;">送り先を選ぶ</button>
 
 </div>
 <% end %>
 
   <div class="row" style="margin-top:30px; border-radius:1%; border: 1px solid rgb(216, 213, 217);background-color:rgb(246, 246, 246)">
     <div class="" style="font-size:25px;">
-      Check Other Items
+      あなたへのオススメ
     </div>
 
     <div id="css-slider">
@@ -88,7 +88,7 @@ pr = pr + cart.subtotal
           <div class="col-md-3 goodscol slide-item">
             <%= link_to image_tag(p.image, :width => "240px", :height => "240px"), product_path(p.id) %><br>
             <span class="categorydevide"><%= p.name %></span> <br>
-            Rs. <%= p.price %>
+            ¥<%= p.price %>
 
              <div id="kinds"> # <%= p.category_id %> </div>
           </div>

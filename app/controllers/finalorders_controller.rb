@@ -11,6 +11,8 @@ class FinalordersController < ApplicationController
   # GET /finalorders/1.json
   def show
     @cart = Cart.where(userid: session[:myid])
+    @customer = Customer.find_by(id: params[:recipient_id])
+    # binding.pry
 
   end
 
@@ -19,6 +21,7 @@ class FinalordersController < ApplicationController
     @finalorder = Finalorder.new
     @customer = Customer.find_by(id: session[:myid])
     @cart = Cart.where(userid: session[:myid])
+    @opponent_user = Customer.all
 
   end
 
@@ -70,8 +73,19 @@ class FinalordersController < ApplicationController
   end
 
   def finalaction
-    Cart.where(userid: session[:myid]).destroy_all
+    @cart = Cart.where(userid: session[:myid]).destroy_all
 
+    @youbi = %w[(日) (月) (火) (水) (木) (金) (土)]
+    d = Date.today
+    @deliverday = d + 14
+
+    # 送り先のユーザーを取ってくる処理
+    # order_descのインスタンスを一回作らないと値がうまく取ってこれなかった
+    order_desc = Finalorder.order("created_at DESC")
+    @finalorder = order_desc.find_by(user_id: session[:myid])
+    @recipient = Customer.find_by(id: @finalorder.recipient_id)
+
+    # binding.pry
   end
 
   private
@@ -82,6 +96,6 @@ class FinalordersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def finalorder_params
-      params.require(:finalorder).permit(:username, :phonenumber, :address, :email, :delivery, :payment, :gift, :user_id, :product_id, :quantity)
+      params.require(:finalorder).permit(:username, :phonenumber, :address, :email, :delivery, :payment, :gift, :user_id, :product_id, :quantity, :recipient_id)
     end
 end

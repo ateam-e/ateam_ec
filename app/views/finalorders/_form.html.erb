@@ -1,17 +1,17 @@
 <div class="f-container-1">
 
   <%
-        proid="";
-        quan="";
+        @proid="";
+        @quan="";
           @cart.each do |fff|
-            proid += [fff.product_id].join('')+","
-            quan += [fff.number].join('')+","
+            @proid += [fff.product_id].join('')+","
+            @quan += [fff.number].join('')+","
           end
 # ココめっちゃ大事proid="";quan="";をstringで宣言してその中に@cartの中身をeachで回す。.join('')でfff.product_id]をstringにしてまとめる
 
    %>
-  <%= proid.chop %>
-  <%= quan.chop %>
+  <%= @proid.chop %> <br>
+  <%= @quan.chop %> <br>
 
 
   <%= form_with(model: finalorder, local: true) do |form| %>
@@ -27,23 +27,37 @@
       </div>
     <% end %>
 
+
+
+
+
+送り主変えられるかも、、、！
+
     <div class="field">
-      <%= form.label :username %> <br>
+      <!-- <%= form.label :username %> <br> -->
+      自分 <br>
       <%= form.text_field :username, value: @customer.name%>
     </div>
 
     <div class="field">
-      <%= form.label :phonenumber %><br>
-      <%= form.number_field :phonenumber, id: :hello %>
+      <!-- <%= form.label :username %> <br> -->
+      送り相手 <br>
+      <%= form.select :recipient_id, options_from_collection_for_select(Customer.all, :id, :name), :include_blank => "送り相手を選択する" %>
+    </div>
+
+
+    <!-- <div class="field">
+      電話番号<br>
+      <%= form.number_field :phonenumber, id: :phonenumber %>
     </div>
 
     <div class="field">
-      <%= form.label :address %><br>
+      住所<br>
       <%= form.text_field :address, id: :finalorder_address %>
     </div>
 
     <div class="field">
-      <%= form.label :email %><br>
+      メールアドレス<br>
       <%= form.text_field :email, value: @customer.email%>
     </div>
 
@@ -76,16 +90,18 @@
         <%= form.label :gift %><br>
         <%= form.radio_button :gift, "wrap"%>Gift wrapping
         <%= form.radio_button :gift, "no", :checked => true %>No wrapping
-      </div>
+      </div> -->
+      <!-- 一旦消す -->
 
 
+      <%= form.hidden_field :user_id, value: session[:myid]%>
+      <%= form.hidden_field :product_id, value: @proid.chop %>
+      <%= form.hidden_field :quantity, value: @quan.chop%>
+         proidとquanが配列で送信できない
       <div class="actions">
         <%= form.submit class: "btn btn-success"%>
       </div>
 
-      <%= form.hidden_field :user_id, value: session[:myid]%>
-      <%= form.hidden_field :product_id, value: proid.chop%>
-      <%= form.hidden_field :quantity, value: quan.chop%>
       <a class="fbtn-back2">Back</a>
     <% end %>
   </div>

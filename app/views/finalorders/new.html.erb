@@ -7,7 +7,7 @@
   <i class="fab fa-accessible-icon"></i>
   <%= fa_icon "twitter" %>
   <%= fa_icon "ambulance 5x horizonta" %>
-<h1>Finalorder</h1>
+<h1>カタログ送信先</h1>
 
 <%= render 'form', finalorder: @finalorder %>
 
@@ -15,14 +15,14 @@
 </div>
 
 <div class="col-md-offset-4">
-  <h2>Your Orders</h2>
+  <h2>あなたがカスタマイズしたカタログ</h2>
   <table class="table" style="width:500px">
       <thead>
         <tr>
           <th></th>
-          <th>Item</th>
-          <th>Price</th>
-          <th>Quantity</th>
+          <th>アイテム</th>
+          <th>値段</th>
+          <th>量（必要ない）</th>
         </tr>
       </thead>
 
@@ -38,7 +38,7 @@
         <tr>
           <td> <%= image_tag(@productone.image, :width => "50px", :height => "50px") %> </td>
           <td> <%= @productone.name %></td>
-          <td> Rs.<%= cart.productprice %> </td>
+          <td> ¥<%= cart.productprice %> </td>
           <td> <%= cart.number %> </td>
         </tr>
       </tbody>
@@ -47,8 +47,8 @@
         <tr style="font-size:20px">
           <th></th>
           <th></th>
-          <th>Subtotal( <%= @cart.count %> items)</th>
-          <th style="color:rgb(231, 137, 51)">:Rs <%= pr %> </th>
+          <th>合計（必要ない）( <%= @cart.count %> items)</th>
+          <th style="color:rgb(231, 137, 51)">:¥ <%= pr %> </th>
         </tr>
       </thead>
     </table>

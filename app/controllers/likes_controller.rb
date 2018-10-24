@@ -11,7 +11,11 @@ class LikesController < ApplicationController
     )
     @like.save
     # redirect_to("/products/#{params[:product_id]}")
-    redirect_to("/users/home")
+    if params[:back]
+      redirect_to("/users/show")
+    else
+      redirect_to("/users/home")
+    end
   end
 
   def destroy
@@ -21,7 +25,14 @@ class LikesController < ApplicationController
    )
    @like.destroy
    # redirect_to("/products/#{params[:product_id]}")
-   redirect_to("/users/home")
+   
+
+   if params[:back]
+     redirect_to("/users/show")
+   else
+     redirect_to("/users/home")
+   end
+
  end
 
 end

@@ -1,15 +1,13 @@
-<% youbi = %w[Sunday Monday Thuesday Wednesday Thursday Friday Saturday]
-d = Date.today
-deliverday = d + 2
- %>
-
 <div class="row">
   <div class="col-md-offset-2">
-    <h2>Thank you for shopping!!<br>
-    Your order is compleated!!<br>
-    we will deliver until <%= deliverday %> <%= youbi[deliverday.wday] %></h2>
+
+    <h2>ご利用ありがとうございます！<br>
+    <span style="color:red;"> <%= @recipient.name %> </span>さんにお送りになられたカタログギフトは<span style="color:red;"> <%= @recipient.name %> </span>さんのアカウントに送信されました。 <br>
+    <span style="color:red;"> <%= @recipient.name %> </span>さんの回答期限は <%= @deliverday %> <%= @youbi[@deliverday.wday] %>としております。</h2>
     <%= fa_icon "ambulance 4x horizonta"%>
 
 
+
+    <%= link_to "ホーム画面へ戻る", users_home_path %>
   </div>
 </div>
