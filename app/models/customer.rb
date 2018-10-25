@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
   validates :name, {presence: true}
   validates :email, {presence: true}
   validates :dateofbirth, {presence: true}
-  validates :image, {presence: true}
+
   validates :address, {presence: true}
 
 end
