@@ -29,10 +29,6 @@
 
 
 
-
-
-送り主変えられるかも、、、！
-
     <div class="field">
       <!-- <%= form.label :username %> <br> -->
       自分 <br>
@@ -97,7 +93,7 @@
       <%= form.hidden_field :user_id, value: session[:myid]%>
       <%= form.hidden_field :product_id, value: @proid.chop %>
       <%= form.hidden_field :quantity, value: @quan.chop%>
-         proidとquanが配列で送信できない
+         
       <div class="actions">
         <%= form.submit class: "btn btn-success"%>
       </div>

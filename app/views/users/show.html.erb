@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-offset-4">
+  <div class="col-md-7" style="padding-left:20%;">
     <div class="card" style="width:400px">
       <img class="card-img-top img-circle" src=" <%= session[:myimage] %> " alt="Card image" style="width:150px;">
       <div class="card-body" style="padding-left:20px">
@@ -84,20 +84,36 @@
 <!-- 以上modalの中身 -->
     </div>
   </div>
+  <div class="col-md-offset-4">
+    <h2>宅配待ちアイテム</h2>
+     <% if @got_items %>
+      <% @got_items.each do |item| %>
+       <% @giver = Customer.find_by(id: item.customer_id) %>
+       <% @recipient = Customer.find_by(id: item.recipient_id) %>
+       <% @gift = Product.find_by(id: item.product_id) %>
+       <h3> <%= @giver.name %>からのプレゼントの <%= @gift.name %> を選択しました。</h3>
+      <% end %>
+     <% else %>
+       宅配待ちのアイテムは現在ありません
+     <% end %>
+
+  </div>
+
 </div>
 
 <div class="row">
 
-  <div class="col-md-offset-2">
+  <div class="col-md-3" style="width:400px; padding-left:50px;">
     <h1>受け取ったカタログ</h1>
     <% @catalog.each do |catalog| %>
     <% object_name = catalog.product_id %>
     <% object_name = object_name.split(",") %>
     <% object_name = object_name.reverse %>
     <% update = catalog.updated_at %>
+    <% limited_date = update + 14 %>
     <% giver_id = catalog.user_id %>
     <% giver = Customer.find_by(id: giver_id) %>
-    <table class="table" style="width:500px; border: solid 1px;" >
+    <table class="table" style="width:300px; border: solid 1px;" >
     <a  href="/users/<%= catalog.id %>">
       <%= update %>に<%= giver.name %>からカタログギフトがプレゼントされました。
         <thead class="">
@@ -105,7 +121,7 @@
             <th></th>
             <th>商品</th>
             <th>カテゴリー</th>
-            <th>商品説明</th>
+
           </tr>
         </thead>
 
@@ -122,7 +138,7 @@
                      <%= p.state_id %> <br>
                      <%= p.scene_id %>
                 </td>
-                <td> <%= p.description %> </td>
+
                 <% a = a+1 %>
               </tr>
             </tbody>
@@ -139,8 +155,9 @@
 
 
 
-  <h1 class="col-md-offset-2">送ったカタログ</h1>
-   <div class="col-md-offset-2">
+
+   <div class="col-md-6" style="width:600px; padding-left:30px;">
+     <h1>送ったカタログ</h1>
          <% @forder.each do |finalorder| %>
          <% @pro = finalorder.product_id  %>
          <% @q = finalorder.quantity %>
@@ -150,7 +167,7 @@
          <% @quan = @q.split(",")  %>
          <% @quanx = @quan.reverse  %>
          <% @recipient = Customer.find_by(id: finalorder.recipient_id) %>
-         <table class="table" style="width:500px; border: solid 1px;">
+         <table class="table" style="border: solid 1px;">
            <%= @update %>に<%= @recipient.name %>にプレゼントしました。
              <thead class="">
                <tr>
@@ -158,6 +175,7 @@
                  <th>商品名</th>
                  <th>カテゴリー</th>
                  <th>個数</th>
+                 <th>値段</th>
                  <th>When you bought</th>
                </tr>
              </thead>
@@ -173,34 +191,35 @@
                   <td> <%= image_tag(p.image, size: "60x60", alt: "Edit Entry") %> </td>
                   <td> <%= p.name %> </td>
                   <td> <%= p.category_id %></td>
-                  <td> <%= @quanx[a] %> Items</td>
+                  <td> <%= @quanx[a] %> 個</td>
+                  <td> ¥<%= p.price.to_i * @quanx[a].to_i %> </td>
                   <td> <%= @update %></td>
                   <% a = a+1 %>
                 </tr>
               </tbody>
 
-         <%
-       end
-
-         end
-         %>
-
-
-
-         <!-- 難しいなあ -->
-         <!-- ソヌまじすごい　using more than two roops at the same time -->
-
-
-             <!-- <td style="width:500px"><%= @proid %></td>
-             <td><%= link_to 'Show', finalorder %></td>
-             <td><%= link_to 'Edit', edit_finalorder_path(finalorder) %></td>
-             <td><%= link_to 'Destroy', finalorder, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-
-
-             <!-- 重複する配列が表示されない -->
          <% end %>
+       <% end %>
+     <% end %>
          </table>
 
+
+
+   </div>
+
+   <div class="col-md-3" style=" padding-left:50px;">
+     <h1>お会計</h1>
+  <% if @decisions %>
+    <% @decisions.each do |decision| %>
+     <% @giver = Customer.find_by(id: decision.customer_id) %>
+     <% @recipient = Customer.find_by(id: decision.recipient_id) %>
+     <% @gift = Product.find_by(id: decision.product_id) %>
+     <h3> <%= @recipient.name %>さんが <%= @gift.name %>を選択されました。お会計は ¥<%= @gift.price %>です。 </h3>
+    <% end %>
+  <% else %>
+   送り相手がまだプレゼントを選択していません。
+   なんかできてない。。
+  <% end %>
 
 
    </div>
