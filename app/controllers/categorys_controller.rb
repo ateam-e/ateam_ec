@@ -18,7 +18,7 @@ class CategorysController < ApplicationController
   def update
     @category = Category.find(params[:id])
     @category.update(category_params)
-    redirect_to categorys_path
+    redirect_to (categorys_path)
     # ココも意味分からない
   end
 
