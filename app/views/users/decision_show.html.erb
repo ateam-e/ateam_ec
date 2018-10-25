@@ -1,0 +1,43 @@
+hello world
+<h1>カタログギフトを選択する</h1>
+<%= @id %>
+
+<table class="table" style="width:500px; border: solid 1px;" >
+  <thead>
+    <tr>
+      <th></th>
+      <th>商品</th>
+      <th>カテゴリー</th>
+      <th>商品説明</th>
+      <th>選択ボタン</th>
+    </tr>
+  </thead>
+  <% @object_name.each do |object_num| %>
+  <% gift_product = Product.where(id: object_num) %>
+  <% gift_product.each do |p| %>
+  <tbody>
+    <tr>
+      <td> <%= image_tag(p.image, size: "100x100", alt: "Edit Entry") %> </td>
+      <td> <%= p.name %> </td>
+      <td> <%= p.category_id %> <br>
+           <%= p.state_id %> <br>
+           <%= p.scene_id %>
+      </td>
+      <td> <%= p.description %> </td>
+      <td> <button type="button" name="button" ></button> </td>
+    </tr>
+  </tbody>
+
+
+  <% end %>
+  <% end %>
+
+  <%= form_with(model: @decision, local: true, :url => { :controller => :users, :action => :decision_show, :id => @id }) do |form|%>
+  <%= form.hidden_field :customer_id, value: @finalorder.user_id  %>
+  <%= form.hidden_field :recipient_id, value: @finalorder.recipient_id  %>
+  <%= form.select :product_id, options_from_collection_for_select(Product.where(id: @object_name), :id, :id), :include_blank => "選択する" %>
+  <%= form.submit %>
+  <% end %>
+
+
+</table>

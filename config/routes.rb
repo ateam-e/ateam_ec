@@ -85,6 +85,8 @@ root "users#home"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/users/home"
   get "/users/show"
+  get "/users/:id", to: "users#decision_show"
+  post "/users/:id", to: "users#decision_create"
 
 
 end

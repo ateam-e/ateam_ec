@@ -46,7 +46,11 @@
  .hbutton{
    height: 44px;
    font-size: 15px;
+   // background-color: rgba(255, 255, 255, 0);
+
  }
+
+
 
  .hpic{
    // width: 50px;
@@ -60,7 +64,7 @@
    // margin-left:285px;
    // text-align: right;
    float: right;
-   margin-top: 20px;
+   margin-top: 20px
  }
  .mainpic{
    width:1100px;
@@ -220,7 +224,7 @@
   margin: 0;/*余白が入らないように*/
   /*以下装飾*/
   width: 100%;
-  background-color: rgba(#404040, 0.9);
+  background-color:rgba(255, 255, 255, 0.75) ;
   color:white;
   z-index: 50;
   }

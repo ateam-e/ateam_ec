@@ -19,7 +19,7 @@
   <!-- イメージタグにクラスつける方法 -->
 
 
-<a class="navbar-brand" href="#" style="font-size: 60px; margin-top:20px; color:rgb(255, 255, 255)">Ateam-EC</a>
+<a class="navbar-brand" href="#" style="font-size: 60px; margin-top:20px; color:rgba(93, 93, 93, 0.61)">Ateam-EC</a>
 
 
 <div class="hbutton1">
@@ -31,17 +31,17 @@
   <% end %> -->
   <!-- もともとのやつ↑ -->
 
-  <form class="form-inline" action="/action_page." style="margin-bottom:10px; margin-top:-10px; margin-left:280px">
+  <!-- <form class="form-inline" action="/action_page." style="margin-bottom:10px; margin-top:-10px; margin-left:280px">
       <input class="form-control mr-md-2" type="text" placeholder="まだ使えません">
       <button class="btn" type="submit" style="background-color:rgb(105, 107, 108)">
         <%= fa_icon("search", text: "Search")%>
       </button>
-  </form>
+  </form> -->
 <!-- 検索欄 -->
 
 
   <%= link_to users_home_path do %>
-    <button class ="hbutton btn btn-primary" type="button">
+    <button class ="hbutton btn btn-outline-info" type="button" >
       <%= fa_icon("home", text: "Home")%>
     </button>
   <% end %>
@@ -49,8 +49,8 @@
 
 
 <!-- <div class="dropdown" style="padding-left:70px;"> いらなかった？6/27-->
-    <button class ="hbutton btn btn-success itembutton dropdown-toggle" type="button" data-toggle="dropdown">
-      <%= fa_icon("book", text: "Category")%>
+    <button class ="hbutton btn btn-outline-info itembutton dropdown-toggle" type="button" data-toggle="dropdown">
+      <%= fa_icon("book", text: "Category" )%>
     </button>
   <div class="dropdown-menu" style="margin-left:1000px">
     <% Category.all.each do |c| %>
@@ -63,19 +63,19 @@
   <% if session[:myid] %>
     <%= link_to logout_path do %>
       <!-- <input class =" btn btn-danger" type="button" name="" value="LOGOUT"> -->
-      <button class ="hbutton btn btn-danger" type="button" name="" value="LOOUT">
+      <button class ="hbutton btn btn-outline-info" type="button" name="" value="LOGOUT">
         <%= fa_icon("sign-out", text: "Logout")%>
       </button>
     <% end %>
   <% else %>
     <%= link_to login_path do %>
-      <button class ="hbutton btn btn-danger" type="button" name="" value="LOGIN">
+      <button class ="hbutton btn btn-outline-info" type="button" name="" value="LOGIN">
         <%= fa_icon("sign-in", text: "Login")%>
       </button>
     <% end %>
 
     <%= link_to new_customer_path do %>
-      <button class ="hbutton btn btn-warning" type="button" name="" value="REGISTAR">
+      <button class ="hbutton btn btn-outline-info" type="button" name="" value="REGISTAR">
         <%= fa_icon("registered", text: "Register")%>
       </button>
     <% end %>
@@ -84,14 +84,14 @@
 
 
   <%= link_to carts_path do %>
-    <button class ="hbutton btn btn-info" type="button" name="" value="CART" style="height: 44px">
+    <button class ="hbutton btn btn-outline-info" type="button" name="" value="CART" style="height: 44px">
       <%= fa_icon("cart-plus", text: "Cart")%>
     </button>
   <% end %>
 
   <% unless session[:myimage].blank? %>
   <%= link_to users_show_path do %>
-  <button class ="hbutton btn btn-warning" type="button">
+  <button class ="hbutton btn btn-outline-info" type="button">
     <span> <%= image_tag(session[:myimage], width: "29px", style: "border-radius:100%; margin: 0px;") %> </span>
     <span> <%= session[:myname] %>  </span>
     <span> <%= session[:myage] %> </span>

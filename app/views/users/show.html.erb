@@ -97,7 +97,8 @@
     <% update = catalog.updated_at %>
     <% giver_id = catalog.user_id %>
     <% giver = Customer.find_by(id: giver_id) %>
-    <table class="table" style="width:500px; border: solid 1px;">
+    <table class="table" style="width:500px; border: solid 1px;" >
+    <a  href="/users/<%= catalog.id %>">
       <%= update %>に<%= giver.name %>からカタログギフトがプレゼントされました。
         <thead class="">
           <tr>
@@ -127,6 +128,7 @@
             </tbody>
           <% end %>
         <% end %>
+        </a>
     </table>
     <% end %>
 
