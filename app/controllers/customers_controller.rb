@@ -54,6 +54,7 @@ class CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:name,:email,:password,:gender,:dateofbirth,:image,:address)
+    # binding.pry
     # password_digestじゃないのよ
   end
 end
