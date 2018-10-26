@@ -32,8 +32,12 @@
 
 
       <div class="row">
+
+
+
+
         <!-- <%= image_tag("ecsite_pic/main1.png", :class => "col-md-12") %> -->
-        <div id="my-slider" class="carousel slide" data-ride ="carousel">
+        <div id="my-slider" class="carousel slide col-md-12" data-ride ="carousel">
 
 
           <ol class="carousel-indicators" style="margin-bottom:-50px">
@@ -75,53 +79,74 @@
       <div class="row mbrank">
       </div>
 
-    <div class="content row">
+    <!-- <div class="content row"> -->
+      <div class="col-md-2">
 
       <div class="categoryrow">
+        <p style=" color: #915CB8">カテゴリー　v</p>
         <% @categories.each do |c| %>
           <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb" value="<%= c.name %> "><%= c.name %></button> </span>
         <% end %>
       </div>
       <div class="categoryrow">
+        <p style=" color: #915CB8">地域　v</p>
         <% @states.each do |state| %>
           <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb2" value="<%= state.name %> "><%= state.name %></button> </span>
         <% end %>
       </div>
       <div class="categoryrow">
+        <p style=" color: #915CB8">利用シーン　v</p>
         <% @scenes.each do |scene| %>
           <span class="tab1 ajaxbutton">  <button type="button" name="button" class="categoryb" value="<%= scene.name %> "><%= scene.name %></button> </span>
         <% end %>
       </div>
 
 
+      </div>
 <!-- ↓商品一覧 -->
-      <div class="row goodsrow">
+      <div class="col-md-offset-3 goodsrow">
+
+
         <% @products.each do |p| %>
         <% @likes_count = Like.where(product_id: p.id).count %>
 
-          <div class="col-md-2 goodscol">
-            <%= link_to image_tag(p.image, :width => "158px", :height => "158px"), product_path(p.id) %><br>
-            <span class="categorydevide"><%= p.name %></span> <br>
-            ¥<%= p.price %>
+          <div class="col-md-4 colgoodscol">
 
-             <div id="kinds"> # <%= p.category_id %> </div>
-             <div id="kinds"> # <%= p.state_id %> </div>
-             <div id="kinds"> # <%= p.scene_id %> </div>
+            <%= link_to image_tag(p.image, :width => "200px", :height => "200px", :class => "goodspic"), product_path(p.id) %><br>
 
-             <!-- Like機能実装 -->
-             <% if Like.find_by(customer_id: @current_customer, product_id: p.id) %>
-             <!-- @current_customer.idだとうまく挙動しなかった -->
-              <!-- いいね！済み -->
-              <%= link_to("/likes/#{p.id}/destroy", {method: "post"}) do %>
-                <span class="fa fa-heart like-btn-unlike"></span>
-              <% end %>
-             <% else %>
-              <!-- いいね！していません -->
-              <%= link_to("/likes/#{p.id}/create", {method: "post"}) do %>
-                <span class="fa fa-heart like-btn"></span>
-              <% end %>
-             <% end %>
-             <%= @likes_count %>
+            <sapn class="categorydevide" style="font-size:1.5rem; padding-top: 5px;"><%= p.name %></span>
+
+
+
+            <div class="">
+
+              ¥<%= p.price %>
+
+
+
+               <!-- Like機能実装 -->
+               <% if Like.find_by(customer_id: @current_customer, product_id: p.id) %>
+               <!-- @current_customer.idだとうまく挙動しなかった -->
+                <!-- いいね！済み -->
+                <%= link_to("/likes/#{p.id}/destroy", {method: "post"}) do %>
+                  <span class="fa fa-heart like-btn-unlike"></span>
+                <% end %>
+               <% else %>
+                <!-- いいね！していません -->
+                <%= link_to("/likes/#{p.id}/create", {method: "post"}) do %>
+                  <span class="fa fa-heart like-btn"></span>
+                <% end %>
+               <% end %>
+               <%= @likes_count %>
+             </div>
+
+
+             <div class="col-md-10">
+               <span id="kinds" > # <%= p.category_id %> </span>
+               <span id="kinds" > # <%= p.state_id %> </span>
+               <span id="kinds" > # <%= p.scene_id %> </span>
+             </div>
+
           </div>
 
         <% end %>
@@ -129,7 +154,7 @@
       </div>
 
 
-    </div>
+    <!-- </div> -->
 
   </div>
   <!-- ↑追加 itemが選ばれたときのために追加 -->

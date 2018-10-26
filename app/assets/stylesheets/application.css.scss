@@ -79,9 +79,11 @@
 
  #kinds{
    float: right;
-   border: 1px solid black;
    padding: 3px;
    font-size: 10px;
+   color: #915CB8
+
+
  }
  td{
    width: 50px;
@@ -108,12 +110,24 @@
 
  .goodscol{
    // width: 150px;
+   padding-bottom: 20px;
+ }
+
+ .goodspic{
+  opacity: 0.7;
+  border-radius: 10%;
+ }
+ .goodspic:hover {
+  opacity: 1;
  }
  .categoryrow{
    padding-bottom: 15px;
    padding-left: 20px;
    border: 0px;
  }
+
+
+
  .categoryb{
    border: 0px;
    border-radius: 0%;
