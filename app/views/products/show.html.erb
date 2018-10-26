@@ -28,7 +28,7 @@ $(document).ready(function(){
   $("#cart_number").change(function(){
     n = $("#cart_number").val();
     // idにしたほうがいいかも
-alert("#cart_numberは勝手に与えられたドロップボクス内のIDなんだお")
+// alert("#cart_numberは勝手に与えられたドロップボクス内のIDなんだお")
     // pp = $(".productprice").val();
     pp = <%= @product.price %>;
     // ココの書き方めちゃ大事やん
@@ -73,7 +73,8 @@ alert("#cart_numberは勝手に与えられたドロップボクス内のIDな�
      <h3 style="border-bottom:1px solid gray"> ¥<%= p.price %> </h3>
      <!-- <h3 style="border-bottom:1px solid gray"> Rs.<%= link_to(p.price, :class => "productprice", :value => p.price) %> </h3> -->
      <!-- link_toにクラスとバリュをつけてヤッてみたが、Undefinedで返ってきてうまく値の受け渡しができなかった。 -->
-
+     <h4>商品説明</h4>
+     <p><%= p.description %></p>
      <span>個数:</span>
      <!-- <input class="gnum" type="number" name="" value="1" required min="1"> -->
      <%= form.select :number, options_for_select(1..10) %>
@@ -81,7 +82,7 @@ alert("#cart_numberは勝手に与えられたドロップボクス内のIDな�
      <span style="padding-left:200px;">小計: ¥</span>
      <span style="font-size:20px; color:rgb(255, 115, 71)" class="sumup"></span><br>
 
-       <%= form.submit "Add to a cart", class: "answer-show btn btn-warning btn-block", style: "margin-top:50px; border-radius:0%;"%>
+       <%= form.submit "カタログリストに入れる", class: "answer-show btn btn-danger btn-block", style: "margin-top:50px; border-radius:0%;"%>
        <!-- ここから情報を飛ばす↑ -->
        <!-- ログインしてないときの処理はコントローラーに行って書く -->
 
@@ -96,12 +97,14 @@ alert("#cart_numberは勝手に与えられたドロップボクス内のIDな�
      <% @productsub.each do |ps| %>
      <a href="/products/<%= ps.id %>"><span class="row" style="float:left; margin:10px">
        <div class="" style="float:left">
-         <%= image_tag(ps.image, :width => "100px") %>
+         <%= image_tag(ps.image, :width => "150px") %>
        </div>
        <div class="" style="float:left">
          <%= ps.name %> <br>
-         Rs.<%= ps.price %>
-         <div id="kinds"> # <%= ps.category_id %> </div>
+         ¥<%= ps.price %>
+         <div id="kinds"> # <%= ps.category_id %> </div> <br>
+         <div id="kinds"> # <%= ps.state_id %> </div> <br>
+         <div id="kinds"> # <%= ps.scene_id %> </div> <br>
        </div>
      </span></a>
      <% end %>
