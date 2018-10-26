@@ -6,6 +6,9 @@ class UsersController < ApplicationController
     @scenes = Scene.all
   end
 
+  def introduce
+  end
+  
   def show
 
     if @current_customer
@@ -48,6 +51,8 @@ class UsersController < ApplicationController
       redirect_to(users_home_path)
     end
   end
+
+
 
 
   private

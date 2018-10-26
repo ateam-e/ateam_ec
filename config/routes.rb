@@ -87,6 +87,7 @@ root "users#home"
   get "/users/show"
   get "/users/:id", to: "users#decision_show"
   post "/users/:id", to: "users#decision_create"
+  get "/users/introduce",to: "users#introduce"
 
 
 end
