@@ -34,5 +34,5 @@ Scene.create(name: '自分用')
 
 
 
-Product.create(name: '江戸切子グラス', price: '1000', description: '色の付いたガラスに精密に切子した江戸切子のグラスです。二色で展開しており、ペアルックでお使いいただけます。', image: open(File.expand_path('../../assets/images/ecsite_pic/dataset/dataset01.jpg', __FILE__)), category_id: '食器', state_id: '関東', scene_id: '引き出物')
-Product.create(name: '切子グラス', price: '1000', description: '藍色が鮮やかな切子グラスです。湯のみやお猪口など多くの種類を揃えています。', image: open(File.expand_path('../../assets/images/ecsite_pic/dataset/dataset02.jpg', __FILE__)), category_id: '食器', state_id: '関東', scene_id: '引き出物')
+Product.create(name: '江戸切子グラス', price: '1000', description: '色の付いたガラスに精密に切子した江戸切子のグラスです。二色で展開しており、ペアルックでお使いいただけます。', image: open("#{Rails.root}/app/assets/images/ecsite_pic/dataset/dataset13.jpg"), category_id: '食器', state_id: '関東', scene_id: '引き出物')
+Product.create(name: '切子グラス', price: '1000', description: '藍色が鮮やかな切子グラスです。湯のみやお猪口など多くの種類を揃えています。', image: open("#{Rails.root}/app/assets/images/ecsite_pic/dataset/dataset12.jpg"), category_id: '食器', state_id: '関東', scene_id: '引き出物')
