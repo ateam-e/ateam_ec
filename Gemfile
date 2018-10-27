@@ -39,6 +39,7 @@ gem 'jquery-turbolinks'
 # ↑３つbootstrap使うときに追加
 
 gem 'fog'
+gem 'rails_12factor', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
