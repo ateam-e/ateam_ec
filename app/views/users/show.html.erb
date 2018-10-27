@@ -163,11 +163,9 @@
          <% @q = finalorder.quantity %>
          <% @update = finalorder.updated_at %>
          <% @proid = @pro.split(",").map(&:to_i) %>
-         <% raise %>
          <% @proidx = @proid.reverse  %>
          <% @quan = @q.split(",").map(&:to_i)  %>
          <% @quanx = @quan.reverse  %>
-         <% raise %>
          <% @recipient = Customer.find_by(id: finalorder.recipient_id) %>
          <table class="table" style="border: solid 1px;">
            <%= @update %>に<%= @recipient.name %>にプレゼントしました。
