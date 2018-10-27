@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       @finalorder = Finalorder.find_by(id: params[:id])
       @giver = Customer.find_by(id: @finalorder.user_id)
       @object_name = @finalorder.product_id
-      @object_name = @object_name.split(",")
+      @object_name = @object_name.split(",").map(&:to_i)
 
       @id = params[:id]
     else
