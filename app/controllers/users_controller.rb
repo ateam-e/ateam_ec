@@ -19,8 +19,8 @@ class UsersController < ApplicationController
       @catalog = @catalog.order("id DESC")
       @customer = Customer.find_by(id: session[:myid])
       @likes = Like.where(customer_id: @customer.id)
-      # @decisions = Decision.where(customer_id: session[:myid])
-      # @got_items = Decision.where(recipient_id: session[:myid])
+      @decisions = Decision.where(customer_id: session[:myid])
+      @got_items = Decision.where(recipient_id: session[:myid])
 
     else
       redirect_to("/users/home")
